@@ -2,4 +2,14 @@ html,
 body {
   overflow: hidden;
 }
+
+.dialog-box {
+  z-index: 100;
+}
+
+.rendering-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
 /*# sourceMappingURL=moonshot.layout.css.map */
