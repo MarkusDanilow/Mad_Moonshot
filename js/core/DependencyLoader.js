@@ -41,15 +41,19 @@ function DependencyLoader() {
 
 }
 
-DependencyLoader.DependencyOrder = [];
+DependencyLoader.DependencyOrder = ["graphics", "ui", "events"];
 
 DependencyLoader.BaseDirectory = "js/";
 DependencyLoader.DependencyDirectories = {
-
+    graphics: "graphics/",
+    ui: "ui/",
+    events: "events/"
 };
 
 DependencyLoader.DependencyModules = {
-
+    graphics: ["BaseRenderer"],
+    ui: ["UI"],
+    events: ["EventHandler"]
 }
 
 DependencyLoader.DisplayInSidebar = [

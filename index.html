@@ -5,9 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moonshot</title>
+
+    <!-- loading external styles -->
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="lib/normalize.css">
+    <link rel="stylesheet" href="lib/pure.min.css">
+
+    <!-- loading custom styles -->
+    <link rel="stylesheet" href="css/moonshot.layout.css">
+    <link rel="stylesheet" href="css/moonshot.theme.css">
+
+    <!-- loading external scripts -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-ui.min.js"></script>
+    <script src="lib/popper/popper.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/htmlgenerator/HtmlGenerator.js"></script>
+
+    <!-- loading custom scripts -->
+    <script src="js/core/DependencyLoader.js"></script>
+    <script src="js/core/MoonshotApplication.js"></script>
+
 </head>
 
 <body>
+
+    <div class="w-100 h-100 fixed-top bg-dark" id="loading-screen">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 text-center text-white">
+                <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+                <p class="pt-3">Get ready for your spazy-wazy experience...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-0 m-0">
+        <canvas id="rendering-canvas"></canvas>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var app = new MoonshotApplication();
+            app.start(() => {
+
+            });
+        });
+    </script>
 
 </body>
 
