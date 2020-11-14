@@ -35,27 +35,31 @@ function DependencyLoader() {
         this.loadMultipleScripts(scripts, () => {
             setTimeout(() => {
                 callback();
-            }, 1000);
+            }, DependencyLoader.MIN_LOADING_TIMEOUT);
         });
     }
 
 }
 
-DependencyLoader.DependencyOrder = ["graphics", "ui", "events"];
+DependencyLoader.MIN_LOADING_TIMEOUT = 1000;
+
+DependencyLoader.DependencyOrder = ["core", "graphics", "ui", "events", "story", "entities"];
 
 DependencyLoader.BaseDirectory = "js/";
 DependencyLoader.DependencyDirectories = {
+    core: "core/",
     graphics: "graphics/",
     ui: "ui/",
-    events: "events/"
+    events: "events/",
+    story: "story/",
+    entities: "entities/"
 };
 
 DependencyLoader.DependencyModules = {
-    graphics: ["BaseRenderer"],
+    core: ["TimerUtil", "Level"],
+    graphics: ["TransformationUtil", "BaseRenderer"],
     ui: ["UI"],
-    events: ["EventHandler"]
+    events: ["EventHandler"],
+    story: ["MoonshotStory"],
+    entities: ["Entity", "Player"]
 }
-
-DependencyLoader.DisplayInSidebar = [
-
-]

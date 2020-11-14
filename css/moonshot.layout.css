@@ -5,11 +5,15 @@ body {
 
 .dialog-box {
   z-index: 100;
+  display: none;
 }
 
 .rendering-canvas {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 /*# sourceMappingURL=moonshot.layout.css.map */

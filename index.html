@@ -22,6 +22,7 @@
     <script src="lib/popper/popper.js"></script>
     <script src="lib/bootstrap/bootstrap.min.js"></script>
     <script src="lib/htmlgenerator/HtmlGenerator.js"></script>
+    <script src="lib/perlin/perlin.js"></script>
 
     <!-- loading custom scripts -->
     <script src="js/core/DependencyLoader.js"></script>
@@ -45,16 +46,18 @@
     <div class="container-fluid p-0 m-0">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-lg-8 col-12 h-100 mx-auto">
-                <div class="w-100 h-100 dialog-box mt-5" id="dialog-box">
+                <div class="w-100 h-100 dialog-box mt-5 p-4" id="dialog-box">
                     <div class="row h-100">
                         <div class="col-2 h-100 text-center">
                             <img src="images/aly.png" alt="" class="w-100 h-100">
+                            <!--
                             <p>ALY</p>
+                            -->
                         </div>
-                        <div class="col-10" id="dialog-box-text">
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-                            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                        <div class="col-10 text-justify" id="dialog-box-text">
+                        </div>
+                        <div class="col-12 text-right">
+                            <button class="btn btn-outline-secondary" id="story-next">continue...</button>
                         </div>
                     </div>
                 </div>
