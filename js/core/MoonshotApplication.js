@@ -184,7 +184,8 @@ class MoonshotApplication {
      */
     switchToGameplay() {
         this.levelIndex++;
-        this.level = Level.createLevelByLevelIndex(this.levelIndex);
+        // this.level = Level.createLevelByLevelIndex(this.levelIndex);
+        this.level = new Level(this.levelIndex);
         this.level.registerGameplayEvents();
         this.gameplayEnabled = true;
     }

@@ -6,22 +6,21 @@ class Level {
      */
     constructor(level) {
         this.levelId = level;
-        this.changeRate = 0.03 * level;
         this.player = new Player();
         this.keysPressed = Array(256).fill(false);
-        this.respawnThreshold = 3000;
-        this.respawnCountDown = this.respawnThreshold;
         this.entityManager = new EntityManager(this);
-        this.initSpawnableItems();
+        this.initConfiguration();
     }
 
-    initSpawnableItems() {
-        let screwProtoType = new ScrewItem().type;
-        this.spawnableItems = [screwProtoType];
-        this.needsToCollect = {};
-        for (let i = 0; i < this.spawnableItems.length; i++) {
-            this.needsToCollect[this.spawnableItems[i]] = 10;
+    /**
+     * 
+     */
+    initConfiguration() {
+        let config = new LevelConfigurator().configure(this);
+        for (let key in config) {
+            this[key] = config[key];
         }
+        this.respawnCountDown = this.respawnThreshold;
     }
 
     /**
@@ -75,7 +74,8 @@ class Level {
      * 
      */
     spawnNewEntity() {
-        let itemType = this.spawnableItems[Math.floor(Math.random()) * this.spawnableItems.length] + "Item";
+        let keys = Object.keys(this.needsToCollect);
+        let itemType = keys[Math.floor(Math.random()) * keys.length] + "Item";
         this.entityManager.createEntity(itemType);
         this.respawnCountDown = this.respawnThreshold;
     }
@@ -127,17 +127,22 @@ class Level {
      */
     render(ctx) {
         if (!ctx) return;
-        ctx.fillStyle = "white";
-        ctx.font = "20px Arial";
-        ctx.fillText("Level " + this.levelId, 10, 30);
-        ctx.font = "15px Arial";
-        for (let i = 0; i < this.spawnableItems.length; i++) {
-            let itemType = this.spawnableItems[i];
-            let left = this.needsToCollect[itemType];
-            ctx.fillText(itemType + "s: " + left, 10, 30 + ((i + 1) * 25));
-        }
         this.entityManager.render(ctx);
         this.player.render(ctx);
+
+        const font = "Lucida Console";
+
+        ctx.fillStyle = "white";
+        ctx.font = "20px " + font;
+        ctx.fillText("Level " + this.levelId, 10, 30);
+        ctx.font = "15px " + font;
+        let i = 1;
+        for (let item in this.needsToCollect) {
+            let left = this.needsToCollect[item];
+            ctx.fillText(item + "s: " + left, 10, 30 + (i * 25));
+            i++;
+        }
+
     }
 
     registerGameplayEvents() {

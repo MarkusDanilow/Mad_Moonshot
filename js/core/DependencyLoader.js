@@ -63,7 +63,7 @@ DependencyLoader.DependencyModules = {
     ui: ["UI"],
     events: ["EventHandler"],
     story: ["MoonshotStory"],
-    levels: ["Level", "Level_001"],
+    levels: ["ItemCollectionConstants", "LevelConfigurator", "Level"],
     entities: ["EntityManager", "Entity", "Player"],
     items: ["Item", "ScrewItem"]
 }

@@ -18,7 +18,7 @@ class MoonshotStory {
             "You have to help me pick up the parts I lost when I crashed on the lunar surface! Can you do that for me?",
             "Great! You can move left and right with the arrow keys on your keyboard.",
             "Move over objects to pick them up. But be careful! There are many dangerous things on this strange moon...",
-            "Thank you very! You saved my life!!!",
+            "Thank you very much! You saved my life!!!",
             "See ya!"
         ];
 
@@ -31,7 +31,7 @@ class MoonshotStory {
             6
         ];
 
-        this.entryIndex = 0;
+        this.entryIndex = 5;
 
         this.continueFromBreakpoint = 0;
     }
