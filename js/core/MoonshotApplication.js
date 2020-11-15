@@ -192,13 +192,6 @@ class MoonshotApplication {
         this.nextDialog();
     }
 
-    /**
-     * 
-     */
-    startFirstLevel() {
-
-    }
-
 }
 
 /**

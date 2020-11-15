@@ -31,10 +31,6 @@ class MoonshotStory {
             6
         ];
 
-        this.gamePlayCallbacks = {
-            6: MoonshotApplication.INSTANCE.startFirstLevel
-        };
-
         this.entryIndex = 5;
 
         this.continueFromBreakpoint = 0;
@@ -59,13 +55,6 @@ class MoonshotStory {
      */
     continueAfterBreakpoint() {
         this.continueFromBreakpoint = this.entryIndex;
-    }
-
-    /**
-     * 
-     */
-    switchToGameplay() {
-        return this.gamePlayCallbacks[this.entryIndex];
     }
 
     /**

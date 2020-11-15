@@ -49,7 +49,6 @@ class BaseRenderer {
                     yp += MoonshotApplication.INSTANCE.getLevel().levelOffset.y;
                 }
                 var value = noise.perlin2(x, yp);
-                console.log(value);
                 if (value > 0.9) {
                     this.ctx.beginPath();
                     this.ctx.arc(x, y, 1, 0, 2 * Math.PI);

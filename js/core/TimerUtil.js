@@ -13,7 +13,6 @@ class TimerUtil {
      */
     update() {
         let now = this.getNow();
-        console.log(now, this.now);
         this.delta = now - this.now;
         this.now = now;
     }
