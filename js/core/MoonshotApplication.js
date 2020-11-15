@@ -192,12 +192,16 @@ class MoonshotApplication {
     /**
      * 
      */
-    disableGameplay() {
+    disableGameplay(moveOnInStory = true) {
         this.gameplayEnabled = false;
         this.level.unregisterGameplayEvents();
         this.level = null;
-        this.storyModule.continueAfterBreakpoint();
-        this.nextDialog();
+        if (moveOnInStory) {
+            this.storyModule.continueAfterBreakpoint();
+            this.nextDialog();
+        } else {
+            alert("You did not succeed in the current level. Give it another try!");
+        }
     }
 
 }

@@ -43,7 +43,7 @@ function DependencyLoader() {
 
 DependencyLoader.MIN_LOADING_TIMEOUT = 1000;
 
-DependencyLoader.DependencyOrder = ["core", "graphics", "ui", "events", "story", "levels", "entities"];
+DependencyLoader.DependencyOrder = ["core", "graphics", "ui", "events", "story", "levels", "entities", "items"];
 
 DependencyLoader.BaseDirectory = "js/";
 DependencyLoader.DependencyDirectories = {
@@ -53,7 +53,8 @@ DependencyLoader.DependencyDirectories = {
     events: "events/",
     story: "story/",
     levels: "levels/",
-    entities: "entities/"
+    entities: "entities/",
+    items: "entities/items/"
 };
 
 DependencyLoader.DependencyModules = {
@@ -63,5 +64,6 @@ DependencyLoader.DependencyModules = {
     events: ["EventHandler"],
     story: ["MoonshotStory"],
     levels: ["Level", "Level_001"],
-    entities: ["EntityManager", "Entity", "Player"]
+    entities: ["EntityManager", "Entity", "Player"],
+    items: ["Item", "ScrewItem"]
 }

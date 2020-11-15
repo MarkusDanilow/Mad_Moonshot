@@ -12,7 +12,16 @@ class Level {
         this.respawnThreshold = 3000;
         this.respawnCountDown = this.respawnThreshold;
         this.entityManager = new EntityManager(this);
-        this.needsToCollect = 1;
+        this.initSpawnableItems();
+    }
+
+    initSpawnableItems() {
+        let screwProtoType = new ScrewItem().type;
+        this.spawnableItems = [screwProtoType];
+        this.needsToCollect = {};
+        for (let i = 0; i < this.spawnableItems.length; i++) {
+            this.needsToCollect[this.spawnableItems[i]] = 10;
+        }
     }
 
     /**
@@ -47,7 +56,12 @@ class Level {
      * This must be overridden by each level
      */
     levelWinCriteria() {
-        return this.needsToCollect <= 0;
+        for (let index in this.needsToCollect) {
+            if (this.needsToCollect[index] > 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -61,7 +75,8 @@ class Level {
      * 
      */
     spawnNewEntity() {
-        this.entityManager.createEntity("Entity");
+        let itemType = this.spawnableItems[Math.floor(Math.random()) * this.spawnableItems.length] + "Item";
+        this.entityManager.createEntity(itemType);
         this.respawnCountDown = this.respawnThreshold;
     }
 
@@ -80,7 +95,8 @@ class Level {
      * @param {*} item 
      */
     collect(item) {
-        this.needsToCollect--;
+        let type = item.type;
+        this.needsToCollect[type]--;
     }
 
     /**
@@ -99,10 +115,10 @@ class Level {
         }
 
         if (this.levelLostCriteria()) {
-
+            MoonshotApplication.INSTANCE.disableGameplay(false);
         }
         if (this.levelWinCriteria()) {
-            MoonshotApplication.INSTANCE.disableGameplay();
+            MoonshotApplication.INSTANCE.disableGameplay(true);
         }
     }
 
@@ -115,7 +131,11 @@ class Level {
         ctx.font = "20px Arial";
         ctx.fillText("Level " + this.levelId, 10, 30);
         ctx.font = "15px Arial";
-        ctx.fillText("Left to collect: " + this.needsToCollect, 10, 55);
+        for (let i = 0; i < this.spawnableItems.length; i++) {
+            let itemType = this.spawnableItems[i];
+            let left = this.needsToCollect[itemType];
+            ctx.fillText(itemType + "s: " + left, 10, 30 + ((i + 1) * 25));
+        }
         this.entityManager.render(ctx);
         this.player.render(ctx);
     }

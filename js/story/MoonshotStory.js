@@ -31,7 +31,7 @@ class MoonshotStory {
             6
         ];
 
-        this.entryIndex = 5;
+        this.entryIndex = 0;
 
         this.continueFromBreakpoint = 0;
     }

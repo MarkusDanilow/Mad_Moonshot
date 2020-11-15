@@ -12,7 +12,6 @@ class Level_001 extends Level {
             }
         };
         this.respawnThreshold = 2000;
-        this.needsToCollect = 10;
     }
 
     update() {
