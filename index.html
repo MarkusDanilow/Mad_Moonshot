@@ -44,8 +44,11 @@
     <canvas class="rendering-canvas" id="rendering-canvas"></canvas>
 
     <div class="container-fluid p-0 m-0">
+
+        <!-- dialog box with Aly or other NPCs-->
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-lg-8 col-12 h-100 mx-auto">
+
                 <div class="w-100 h-100 dialog-box mt-5 p-4" id="dialog-box">
                     <div class="row h-100">
                         <div class="col-2 h-100 text-center">
@@ -61,6 +64,28 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- message box for error messages -->
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-lg-8 col-12 h-100 mx-auto">
+
+                <div class="w-100 h-100 dialog-box error-box mt-5 p-4" id="error-box">
+                    <div class="row h-100">
+                        <div class="col-12 text-justify font-weight-bold" id="error-box-text">
+                        </div>
+                        <div class="col-12">
+                            <hr/>
+                            <span id="error-hint-reload">
+                                Click to restart the game
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- messae box for different game states => WIN / LOSS -->
+
             </div>
         </div>
     </div>

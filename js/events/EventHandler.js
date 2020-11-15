@@ -15,6 +15,11 @@ class EventHandler {
      * 
      */
     initClickEvents() {
+
+        $('#error-hint-reload').click((e) => {
+            window.location.reload();
+        });
+
         $('#story-next').click((e) => {
             MoonshotApplication.INSTANCE.nextDialog();
         });

@@ -10,17 +10,23 @@ class UI {
     /**
      * 
      * @param {*} el 
+     * @param {*} fn 
      */
-    showElement(el) {
-        if (el) el.fadeIn(UI.FADING_TIME);
+    showElement(el, fn) {
+        if (el) el.fadeIn(UI.FADING_TIME, () => {
+            if (fn) fn();
+        });
     }
 
     /**
      * 
      * @param {*} el 
+     * @param {*} fn 
      */
-    hideElement(el) {
-        if (el) el.fadeOut(UI.FADING_TIME);
+    hideElement(el, fn) {
+        if (el) el.fadeOut(UI.FADING_TIMEE, () => {
+            if (fn) fn();
+        });
     }
 
     /**
@@ -75,6 +81,19 @@ class UI {
      */
     resetDialogAnimation() {
         clearInterval(this.dialogAnimationInterval);
+    }
+
+    /**
+     * 
+     * @param {*} message 
+     */
+    displayErroMessage(message) {
+        this.hideDialogBox();
+        let scope = this;
+        this.hideElement($('#rendering-canvas'), () => {
+            scope.showElement($('#error-box'));
+            $('#error-box-text').text(message);
+        });
     }
 
 }

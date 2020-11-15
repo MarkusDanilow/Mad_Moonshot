@@ -7,6 +7,7 @@ class MoonshotApplication {
         this.gameLoopReference = null;
         this.gameplayEnabled = false;
         this.levelIndex = 0;
+        this.canStartGame = true;
     }
 
     /**
@@ -31,7 +32,7 @@ class MoonshotApplication {
      */
     printErrorAndQuit() {
         if (this.hasError()) {
-            alert(this.errorMessage);
+            this.ui.displayErroMessage(this.errorMessage);
         }
     }
 
@@ -50,8 +51,10 @@ class MoonshotApplication {
             } else {
                 if (doneCallback) doneCallback();
                 MoonshotApplication.INSTANCE.ui.hideLoadingScreen();
-                MoonshotApplication.INSTANCE.gameLoop();
-                MoonshotApplication.INSTANCE.startStoryTelling();
+                if (MoonshotApplication.INSTANCE.canStartGame) {
+                    MoonshotApplication.INSTANCE.gameLoop();
+                    MoonshotApplication.INSTANCE.startStoryTelling();
+                }
             }
         });
     }
@@ -166,7 +169,12 @@ class MoonshotApplication {
             // render stuff
             game.baseRenderer.render();
 
-            requestAnimationFrame(game.gameLoop);
+            if (game.hasError()) {
+                clearTimeout(game.gameLoopReference);
+                game.printErrorAndQuit();
+            } else {
+                requestAnimationFrame(game.gameLoop);
+            }
 
         }, 1000 / MoonshotApplication.TARGET_FPS)
     }

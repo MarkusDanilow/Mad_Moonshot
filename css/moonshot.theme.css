@@ -1,3 +1,5 @@
+/* VARIABLES */
+/* CSS ELEMENT DEFINITIONS */
 html,
 body {
   font-family: "Lucida Console", Monaco, monospace;
@@ -10,7 +12,22 @@ body {
   background: rgba(0, 0, 0, 0.8);
 }
 
+.error-box {
+  border: 1px solid #f00;
+  color: #f00;
+}
+
+.error-box hr {
+  background: #f00;
+}
+
+.error-box #error-hint-reload {
+  cursor: pointer;
+  text-decoration: underline;
+  font-style: italic;
+}
+
 .rendering-canvas {
-  border: 1px solid rgba(250, 250, 250, 0.3);
+  border: none;
 }
 /*# sourceMappingURL=moonshot.theme.css.map */

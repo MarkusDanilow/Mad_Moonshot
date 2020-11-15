@@ -1,15 +1,37 @@
+/* VARIABLES */
+
+$backgroundColor: #000;
+$translucentBackgroundColor: rgba(0, 0, 0, 0.8);
+$foregroundColor: #fff;
+$errorColor: #f00;
+
+/* CSS ELEMENT DEFINITIONS */
+
 html,
 body {
     font-family: "Lucida Console", Monaco, monospace;
-    background: #000;
+    background: $backgroundColor;
 }
 
 .dialog-box {
     border-radius: 10px;
-    border: 1px solid #fff;
-    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid $foregroundColor;
+    background: $translucentBackgroundColor;
+}
+
+.error-box {
+    border: 1px solid $errorColor;
+    color: $errorColor;
+    hr {
+        background: $errorColor;
+    }
+    #error-hint-reload {
+        cursor: pointer;
+        text-decoration: underline;
+        font-style: italic;
+    }
 }
 
 .rendering-canvas {
-    border: 1px solid rgba(250, 250, 250, 0.3);
+    border: none;
 }
