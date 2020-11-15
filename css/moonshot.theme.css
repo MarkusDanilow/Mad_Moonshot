@@ -28,6 +28,6 @@ body {
 }
 
 .rendering-canvas {
-  border: none;
+  border: 1px solid rgba(250, 250, 250, 0.5);
 }
 /*# sourceMappingURL=moonshot.theme.css.map */

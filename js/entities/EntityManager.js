@@ -11,9 +11,9 @@ class EntityManager {
     createEntity(type = null) {
         if (!type) return;
         let entity = eval(`new ${type}()`);
-        entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y;
+        entity.size = { width: 0.05, height: 0.05 * TransformationUtil.TARGET_RES_RATIO };
+        entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y + entity.size.height * 2;
         entity.position.x = Math.random() * 2 - 1;
-        entity.size = { width: 0.015, height: 0.015 };
         entity.fillColor = "green";
         this.entities.push(entity);
     }
@@ -27,9 +27,15 @@ class EntityManager {
 
     update() {
         let delta = this.levelReference.getChangeForCurrentTick();
+        let player = this.levelReference.player;
         for (let i = this.entities.length - 1; i >= 0; i--) {
             this.entities[i].moveDown(delta);
-            if (this.entities[i].isOutOfBoundsY()) {
+            let collected = player.collidesWith(this.entities[i]);
+            // collection logic
+            if (collected) {
+                this.levelReference.collect(this.entities[i]);
+            }
+            if (this.entities[i].isOutOfBoundsY() || collected) {
                 this.entities.splice(i, 1);
             }
         }

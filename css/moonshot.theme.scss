@@ -4,6 +4,8 @@ $backgroundColor: #000;
 $translucentBackgroundColor: rgba(0, 0, 0, 0.8);
 $foregroundColor: #fff;
 $errorColor: #f00;
+$debugBorderColor: rgba(250, 250, 250, 0.5);
+$finalBorderColor: #000;
 
 /* CSS ELEMENT DEFINITIONS */
 
@@ -33,5 +35,5 @@ body {
 }
 
 .rendering-canvas {
-    border: none;
+    border: 1px solid $debugBorderColor;
 }

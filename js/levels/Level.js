@@ -12,6 +12,7 @@ class Level {
         this.respawnThreshold = 3000;
         this.respawnCountDown = this.respawnThreshold;
         this.entityManager = new EntityManager(this);
+        this.needsToCollect = 1;
     }
 
     /**
@@ -46,7 +47,7 @@ class Level {
      * This must be overridden by each level
      */
     levelWinCriteria() {
-        return false;
+        return this.needsToCollect <= 0;
     }
 
     /**
@@ -76,10 +77,19 @@ class Level {
 
     /**
      * 
+     * @param {*} item 
+     */
+    collect(item) {
+        this.needsToCollect--;
+    }
+
+    /**
+     * 
      */
     update() {
         this.updateSpawnCountDown();
         this.entityManager.update();
+
         for (let i = 0; i < this.keysPressed.length; i++) {
             if (this.keysPressed[i]) {
                 if (this.eventHandlers[i]) {
@@ -87,10 +97,12 @@ class Level {
                 }
             }
         }
+
         if (this.levelLostCriteria()) {
 
-        } else if (this.levelWinCriteria()) {
-
+        }
+        if (this.levelWinCriteria()) {
+            MoonshotApplication.INSTANCE.disableGameplay();
         }
     }
 
@@ -99,9 +111,11 @@ class Level {
      */
     render(ctx) {
         if (!ctx) return;
-        ctx.font = "20px Arial";
         ctx.fillStyle = "white";
+        ctx.font = "20px Arial";
         ctx.fillText("Level " + this.levelId, 10, 30);
+        ctx.font = "15px Arial";
+        ctx.fillText("Left to collect: " + this.needsToCollect, 10, 55);
         this.entityManager.render(ctx);
         this.player.render(ctx);
     }

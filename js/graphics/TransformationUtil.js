@@ -80,9 +80,22 @@ class TransformationUtil {
      */
     convertWorldToPixelSize(worldSize) {
         if (!worldSize) return { width: 0, height: 0 };
-        let ws = { width: worldSize.width, height: worldSize.height };
-        let avgSize = (TransformationUtil.TARGET_RES.width + TransformationUtil.TARGET_RES.height) / 2;
-        return { width: ws.width * avgSize, height: ws.height * avgSize };
+        let worldBoundsRatio = this.getWorldBoundsRange();
+        let ws = { width: worldSize.width / worldBoundsRatio.x, height: worldSize.height / worldBoundsRatio.y };
+        return { width: ws.width * TransformationUtil.TARGET_RES.width, height: ws.height * TransformationUtil.TARGET_RES.height };
+    }
+
+    /**
+     * 
+     * @param {*} r1 
+     * @param {*} r2 
+     */
+    intersectRect(r1, r2) {
+        // no horizontal overlap
+        if (r2.left >= r1.right || r2.right <= r1.left) return false;
+        // no vertical overlap
+        if (r2.top >= r1.bottom || r2.bottom <= r1.top) return false;
+        return true;
     }
 
 }

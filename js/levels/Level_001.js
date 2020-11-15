@@ -11,6 +11,8 @@ class Level_001 extends Level {
                 scope.player.moveRight();
             }
         };
+        this.respawnThreshold = 2000;
+        this.needsToCollect = 10;
     }
 
     update() {
@@ -22,14 +24,6 @@ class Level_001 extends Level {
         // if (!ctx) return;
         super.render(ctx);
         // ... do custom rendering stuff for this particular level
-    }
-
-    levelLostCriteria() {
-        return false;
-    }
-
-    levelWinCriteria() {
-        return false;
     }
 
 }
