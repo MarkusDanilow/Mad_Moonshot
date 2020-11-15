@@ -49,6 +49,42 @@ class TransformationUtil {
         return this.canvasSize;
     }
 
+    /**
+     * 
+     */
+    getWorldBoundsRange() {
+        return {
+            x: TransformationUtil.WORLD_BOUNDS.max_x - TransformationUtil.WORLD_BOUNDS.min_x,
+            y: TransformationUtil.WORLD_BOUNDS.max_y - TransformationUtil.WORLD_BOUNDS.min_y
+        };
+    }
+
+    /**
+     * 
+     * @param {*} worldCoords 
+     */
+    convertWorldToPixelCoords(worldCoords) {
+        if (!worldCoords) return { x: 0, y: 0 };
+        let wc = { x: worldCoords.x, y: worldCoords.y };
+        wc.x += Math.abs(TransformationUtil.WORLD_BOUNDS.min_x);
+        wc.y += Math.abs(TransformationUtil.WORLD_BOUNDS.min_y);
+        let worldBoundsRatio = this.getWorldBoundsRange();
+        let ratioX = TransformationUtil.TARGET_RES.width / worldBoundsRatio.x;
+        let ratioY = TransformationUtil.TARGET_RES.height / worldBoundsRatio.y;
+        return { x: wc.x * ratioX, y: wc.y * ratioY };
+    }
+
+    /**
+     * 
+     * @param {*} worldSize 
+     */
+    convertWorldToPixelSize(worldSize) {
+        if (!worldSize) return { width: 0, height: 0 };
+        let ws = { width: worldSize.width, height: worldSize.height };
+        let avgSize = (TransformationUtil.TARGET_RES.width + TransformationUtil.TARGET_RES.height) / 2;
+        return { width: ws.width * avgSize, height: ws.height * avgSize };
+    }
+
 }
 
 /**
@@ -59,3 +95,5 @@ TransformationUtil.TARGET_RES = { width: 1024, height: 768 };
 TransformationUtil.TARGET_RES_RATIO = TransformationUtil.TARGET_RES.width / TransformationUtil.TARGET_RES.height;
 
 TransformationUtil.BORDER_OFFSET = 20;
+
+TransformationUtil.WORLD_BOUNDS = { min_x: -1, max_x: 1, min_y: -1, max_y: 1 };

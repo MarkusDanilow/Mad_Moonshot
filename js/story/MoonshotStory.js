@@ -17,7 +17,9 @@ class MoonshotStory {
             "I had a breakdown on my spaceship while I was on my journey through the galaxy and got stranded on a lonely moon.",
             "You have to help me pick up the parts I lost when I crashed on the lunar surface! Can you do that for me?",
             "Great! You can move left and right with the arrow keys on your keyboard.",
-            "Move over objects to pick them up. But be careful! There are many dangerous things on this strange moon..."
+            "Move over objects to pick them up. But be careful! There are many dangerous things on this strange moon...",
+            "Thank you very! You saved my life!!!",
+            "See ya!"
         ];
 
         /**
@@ -34,6 +36,8 @@ class MoonshotStory {
         };
 
         this.entryIndex = 5;
+
+        this.continueFromBreakpoint = 0;
     }
 
     /**
@@ -41,6 +45,20 @@ class MoonshotStory {
      */
     isBreakpoint() {
         return this.entryBreakpoints.includes(this.entryIndex);
+    }
+
+    /**
+     * 
+     */
+    canContinueFromBreakpoint() {
+        return this.entryIndex == this.continueFromBreakpoint;
+    }
+
+    /**
+     * 
+     */
+    continueAfterBreakpoint() {
+        this.continueFromBreakpoint = this.entryIndex;
     }
 
     /**

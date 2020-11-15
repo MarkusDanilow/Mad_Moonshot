@@ -21,9 +21,8 @@ class BaseRenderer {
      * 
      */
     clearScreen() {
-        let canvasSize = MoonshotApplication.INSTANCE.getTransform().getCanvasSize();
         this.ctx.fillStyle = "#000";
-        this.ctx.fillRect(0, 0, canvasSize.width, canvasSize.height);
+        this.ctx.fillRect(0, 0, TransformationUtil.TARGET_RES.width, TransformationUtil.TARGET_RES.height);
     }
 
     /**

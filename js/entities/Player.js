@@ -2,14 +2,10 @@ class Player extends Entity {
 
     constructor() {
         super();
-        this.size = { width: 20, height: 20 };
-        this.position = { x: 100, y: 100 };
-    }
-
-    render(ctx) {
-        if (!ctx) return;
-        ctx.fillStyle = "white";
-        ctx.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        this.size = { width: 0.05, height: 0.05 };
+        this.position = { x: 0, y: 0.85 };
+        this.fillColor = "#f00";
+        this.speed = 0.05;
     }
 
 }

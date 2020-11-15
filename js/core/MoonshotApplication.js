@@ -89,12 +89,8 @@ class MoonshotApplication {
      */
     nextDialog() {
         this.ui.resetDialogAnimation();
-        if (this.storyModule.isBreakpoint()) {
+        if (this.storyModule.isBreakpoint() && !this.storyModule.canContinueFromBreakpoint()) {
             this.hideDialogBox();
-            /*
-            let gameplay = this.storyModule.switchToGameplay();
-            gameplay();
-            */
             this.switchToGameplay();
         } else {
             this.showDialogBox();
@@ -163,7 +159,6 @@ class MoonshotApplication {
             game.timer.update();
 
             if (game.gameplayEnabled) {
-                // get input 
                 // update game logic 
                 game.level.update();
             }
@@ -181,8 +176,20 @@ class MoonshotApplication {
      */
     switchToGameplay() {
         this.levelIndex++;
-        this.level = new Level(this.levelIndex);
+        this.level = Level.createLevelByLevelIndex(this.levelIndex);
+        this.level.registerGameplayEvents();
         this.gameplayEnabled = true;
+    }
+
+    /**
+     * 
+     */
+    disableGameplay() {
+        this.gameplayEnabled = false;
+        this.level.unregisterGameplayEvents();
+        this.level = null;
+        this.storyModule.continueAfterBreakpoint();
+        this.nextDialog();
     }
 
     /**
