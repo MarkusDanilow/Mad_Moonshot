@@ -1,4 +1,4 @@
-class Level_001 extends Level {
+class Level_100 extends Level {
 
     constructor(level) {
         super(level);

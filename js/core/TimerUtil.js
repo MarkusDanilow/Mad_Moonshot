@@ -21,6 +21,13 @@ class TimerUtil {
      * 
      */
     getDelta() {
+        return this.delta / TimerUtil.DELTA_TICK_MODIFIER;
+    }
+
+    /**
+     * 
+     */
+    getDeltaRaw() {
         return this.delta;
     }
 
@@ -32,3 +39,8 @@ class TimerUtil {
     }
 
 }
+
+/**
+ * 
+ */
+TimerUtil.DELTA_TICK_MODIFIER = 100;

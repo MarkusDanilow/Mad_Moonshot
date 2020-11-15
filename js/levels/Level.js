@@ -6,10 +6,40 @@ class Level {
      */
     constructor(level) {
         this.levelId = level;
-        this.levelOffset = { x: 0, y: 0 };
-        this.speed = 3 * level;
+        this.changeRate = 0.03 * level;
         this.player = new Player();
         this.keysPressed = Array(256).fill(false);
+        this.respawnThreshold = 3000;
+        this.respawnCountDown = this.respawnThreshold;
+        this.entityManager = new EntityManager(this);
+    }
+
+    /**
+     * 
+     */
+    getChangeRate() {
+        return this.changeRate;
+    }
+
+    /**
+     * 
+     */
+    getChangeForCurrentTick() {
+        return this.changeRate * this.getDelta();
+    }
+
+    /**
+     * 
+     */
+    getDelta() {
+        return MoonshotApplication.INSTANCE.getTimer().getDelta();
+    }
+
+    /**
+     * 
+     */
+    getDeltaRaw() {
+        return MoonshotApplication.INSTANCE.getTimer().getDeltaRaw();
     }
 
     /**
@@ -29,9 +59,27 @@ class Level {
     /**
      * 
      */
+    spawnNewEntity() {
+        this.entityManager.createEntity("Entity");
+        this.respawnCountDown = this.respawnThreshold;
+    }
+
+    /**
+     * 
+     */
+    updateSpawnCountDown() {
+        this.respawnCountDown -= this.getDeltaRaw();
+        if (this.respawnCountDown <= 0) {
+            this.spawnNewEntity();
+        }
+    }
+
+    /**
+     * 
+     */
     update() {
-        let deltaOffset = this.speed * MoonshotApplication.INSTANCE.getTimer().getDelta();
-        this.levelOffset.y += deltaOffset;
+        this.updateSpawnCountDown();
+        this.entityManager.update();
         for (let i = 0; i < this.keysPressed.length; i++) {
             if (this.keysPressed[i]) {
                 if (this.eventHandlers[i]) {
@@ -54,6 +102,7 @@ class Level {
         ctx.font = "20px Arial";
         ctx.fillStyle = "white";
         ctx.fillText("Level " + this.levelId, 10, 30);
+        this.entityManager.render(ctx);
         this.player.render(ctx);
     }
 

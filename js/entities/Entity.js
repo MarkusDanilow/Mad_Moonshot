@@ -18,7 +18,7 @@ class Entity {
 
     getDelta() {
         let timer = MoonshotApplication.INSTANCE.getTimer();
-        return timer.getDelta() / 100;
+        return timer.getDelta();
     }
 
     checkPositionX() {
@@ -35,6 +35,19 @@ class Entity {
     moveRight() {
         this.position.x += this.speed * this.getDelta();
         this.checkPositionX();
+    }
+
+    moveUp(delta) {
+        this.position.y -= delta;
+    }
+
+    moveDown(delta) {
+        this.position.y += delta;
+    }
+
+    isOutOfBoundsY() {
+        return (this.position.y < TransformationUtil.WORLD_BOUNDS.min_y + this.size.height ||
+            this.position.y > TransformationUtil.WORLD_BOUNDS.max_y);
     }
 
 }

@@ -63,5 +63,5 @@ DependencyLoader.DependencyModules = {
     events: ["EventHandler"],
     story: ["MoonshotStory"],
     levels: ["Level", "Level_001"],
-    entities: ["Entity", "Player"]
+    entities: ["EntityManager", "Entity", "Player"]
 }
