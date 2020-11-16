@@ -13,8 +13,10 @@ class EntityManager {
         let entity = eval(`new ${type}()`);
         entity.size = { width: 0.05, height: 0.05 * TransformationUtil.TARGET_RES_RATIO };
         entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y + entity.size.height * 2;
-        entity.position.x = Math.random() * 2 - 1;
-        entity.fillColor = "green";
+        entity.position.x = Math.random() * 2 - TransformationUtil.WORLD_BOUNDS.max_x;
+        if (entity.position.x >= TransformationUtil.WORLD_BOUNDS.max_x - entity.size.width) {
+            entity.position.x = TransformationUtil.WORLD_BOUNDS.max_x - entity.size.width;
+        }
         this.entities.push(entity);
     }
 

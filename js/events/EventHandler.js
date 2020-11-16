@@ -21,7 +21,12 @@ class EventHandler {
         });
 
         $('#story-next').click((e) => {
-            MoonshotApplication.INSTANCE.nextDialog();
+            let game = MoonshotApplication.INSTANCE;
+            if (game.tryAgain) {
+                game.switchToGameplay();
+            } else {
+                game.nextDialog();
+            }
         });
     }
 

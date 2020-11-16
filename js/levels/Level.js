@@ -55,8 +55,8 @@ class Level {
      * This must be overridden by each level
      */
     levelWinCriteria() {
-        for (let index in this.needsToCollect) {
-            if (this.needsToCollect[index] > 0) {
+        for (let item in this.needsToCollect) {
+            if (this.needsToCollect[item].amount > 0 && this.needsToCollect[item].required) {
                 return false;
             }
         }
@@ -67,7 +67,7 @@ class Level {
      * This must also be overridden by each level
      */
     levelLostCriteria() {
-        return false;
+        return this.player.health <= 0;
     }
 
     /**
@@ -75,7 +75,7 @@ class Level {
      */
     spawnNewEntity() {
         let keys = Object.keys(this.needsToCollect);
-        let itemType = keys[Math.floor(Math.random()) * keys.length] + "Item";
+        let itemType = keys[Math.floor(Math.random() * keys.length)] + "Item";
         this.entityManager.createEntity(itemType);
         this.respawnCountDown = this.respawnThreshold;
     }
@@ -95,8 +95,15 @@ class Level {
      * @param {*} item 
      */
     collect(item) {
-        let type = item.type;
-        this.needsToCollect[type]--;
+        if (item.isDangerous()) {
+            $('#rendering-canvas').effect("shake");
+            $('#explosion-sound')[0].play();
+            this.player.health -= item.damage;
+        } else {
+            $('#collect-sound')[0].play();
+            let type = item.type;
+            this.needsToCollect[type].amount--;
+        }
     }
 
     /**
@@ -131,17 +138,23 @@ class Level {
         this.player.render(ctx);
 
         const font = "Lucida Console";
+        const baseFontSize = 25;
 
-        ctx.fillStyle = "white";
-        ctx.font = "20px " + font;
+        ctx.fillStyle = "#fff";
+        ctx.font = baseFontSize + "px " + font;
         ctx.fillText("Level " + this.levelId, 10, 30);
-        ctx.font = "15px " + font;
+        ctx.font = (baseFontSize - 5) + "px " + font;
         let i = 1;
         for (let item in this.needsToCollect) {
-            let left = this.needsToCollect[item];
-            ctx.fillText(item + "s: " + left, 10, 30 + (i * 25));
-            i++;
+            if (this.needsToCollect[item].required) {
+                let amount = this.needsToCollect[item].amount;
+                ctx.fillText(item + "s: " + amount, 10, 45 + (i * 30));
+                i++;
+            }
         }
+
+        ctx.fillStyle = "#0af";
+        ctx.fillText("Health: " + this.player.health, TransformationUtil.TARGET_RES.width - 200, 75);
 
     }
 

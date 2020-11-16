@@ -8,6 +8,7 @@ class MoonshotApplication {
         this.gameplayEnabled = false;
         this.levelIndex = 0;
         this.canStartGame = true;
+        this.tryAgain = false;
     }
 
     /**
@@ -93,7 +94,6 @@ class MoonshotApplication {
     nextDialog() {
         this.ui.resetDialogAnimation();
         if (this.storyModule.isBreakpoint() && !this.storyModule.canContinueFromBreakpoint()) {
-            this.hideDialogBox();
             this.switchToGameplay();
         } else {
             this.showDialogBox();
@@ -183,11 +183,15 @@ class MoonshotApplication {
      * 
      */
     switchToGameplay() {
-        this.levelIndex++;
+        this.hideDialogBox();
+        if (!this.tryAgain) {
+            this.levelIndex++;
+        }
         // this.level = Level.createLevelByLevelIndex(this.levelIndex);
         this.level = new Level(this.levelIndex);
         this.level.registerGameplayEvents();
         this.gameplayEnabled = true;
+        this.tryAgain = false;
     }
 
     /**
@@ -197,11 +201,20 @@ class MoonshotApplication {
         this.gameplayEnabled = false;
         this.level.unregisterGameplayEvents();
         this.level = null;
+
+        this.showDialogBox();
+
         if (moveOnInStory) {
+            this.tryAgain = false;
             this.storyModule.continueAfterBreakpoint();
-            this.nextDialog();
+
+            this.ui.renderDialogText("Level completed! Greate job!");
+
         } else {
-            alert("You did not succeed in the current level. Give it another try!");
+            this.tryAgain = true;
+
+            this.ui.renderDialogText("You have not completed this level. Try again!");
+
         }
     }
 
