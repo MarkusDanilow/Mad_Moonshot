@@ -28,6 +28,11 @@ class EventHandler {
                 game.nextDialog();
             }
         });
+
+        $('#start-game-btn').click((e) => {
+            MoonshotApplication.INSTANCE.startGameFromMainMenu();
+        });
+
     }
 
 }

@@ -96,6 +96,20 @@ class UI {
         });
     }
 
+    /**
+     * 
+     */
+    showMainMenu() {
+        this.showElement($('#main-menu-container'));
+    }
+
+    /**
+     * 
+     */
+    hideMainMenu() {
+        this.hideElement($('#main-menu-container'));
+    }
+
 }
 
 /**

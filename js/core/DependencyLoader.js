@@ -59,7 +59,7 @@ DependencyLoader.DependencyDirectories = {
 
 DependencyLoader.DependencyModules = {
     core: ["TimerUtil"],
-    graphics: ["TransformationUtil", "BaseRenderer"],
+    graphics: ["TransformationUtil", "MadColor", "BaseRenderer", "ParticleSystem"],
     ui: ["UI"],
     events: ["EventHandler"],
     story: ["MoonshotStory"],

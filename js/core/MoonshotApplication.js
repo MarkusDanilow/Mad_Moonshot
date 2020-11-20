@@ -7,7 +7,7 @@ class MoonshotApplication {
         this.gameLoopReference = null;
         this.gameplayEnabled = false;
         this.levelIndex = 0;
-        this.canStartGame = true;
+        this.canStartGame = false;
         this.tryAgain = false;
     }
 
@@ -53,8 +53,9 @@ class MoonshotApplication {
                 if (doneCallback) doneCallback();
                 MoonshotApplication.INSTANCE.ui.hideLoadingScreen();
                 if (MoonshotApplication.INSTANCE.canStartGame) {
-                    MoonshotApplication.INSTANCE.gameLoop();
-                    MoonshotApplication.INSTANCE.startStoryTelling();
+                    MoonshotApplication.INSTANCE.startGameFromMainMenu();
+                } else {
+                    MoonshotApplication.INSTANCE.gotoMainMenu();
                 }
             }
         });
@@ -72,6 +73,22 @@ class MoonshotApplication {
         this.storyModule = new MoonshotStory();
         this.timer = new TimerUtil();
         this.level = null;
+    }
+
+    /**
+     * 
+     */
+    gotoMainMenu() {
+        this.ui.showMainMenu();
+    }
+
+    /**
+     * 
+     */
+    startGameFromMainMenu() {
+        this.ui.hideMainMenu();
+        MoonshotApplication.INSTANCE.gameLoop();
+        MoonshotApplication.INSTANCE.startStoryTelling();
     }
 
     /**
@@ -207,13 +224,10 @@ class MoonshotApplication {
         if (moveOnInStory) {
             this.tryAgain = false;
             this.storyModule.continueAfterBreakpoint();
-
-            this.ui.renderDialogText("Level completed! Greate job!");
-
+            this.ui.renderDialogText("Great, you did it!");
         } else {
             this.tryAgain = true;
-
-            this.ui.renderDialogText("You have not completed this level. Try again!");
+            this.ui.renderDialogText("Too bad, unfortunately you did not make it!Give it another try...");
 
         }
     }

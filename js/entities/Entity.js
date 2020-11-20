@@ -16,6 +16,13 @@ class Entity {
         };
     }
 
+    getCenter() {
+        return {
+            x: this.position.x + this.size.width / 2,
+            y: this.position.y + this.size.height / 2
+        }
+    }
+
     render(ctx) {
         ctx.fillStyle = this.fillColor;
         let screenPos = MoonshotApplication.INSTANCE.getTransform().convertWorldToPixelCoords(this.position);

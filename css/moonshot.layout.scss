@@ -16,3 +16,13 @@ body {
     bottom: 0;
     margin: auto;
 }
+
+#main-menu-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 300px;
+    z-index: 2000;
+    display: none;
+}

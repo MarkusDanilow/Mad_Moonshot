@@ -2,6 +2,7 @@ class EntityManager {
 
     constructor(level) {
         this.entities = [];
+        this.particles = [];
         this.levelReference = level;
     }
 
@@ -25,6 +26,9 @@ class EntityManager {
         for (let i = 0; i < this.entities.length; i++) {
             this.entities[i].render(ctx);
         }
+        for (let i = 0; i < this.particles.length; i++) {
+            this.particles[i].render(ctx);
+        }
     }
 
     update() {
@@ -36,9 +40,19 @@ class EntityManager {
             // collection logic
             if (collected) {
                 this.levelReference.collect(this.entities[i]);
+                this.particles.push(
+                    new ParticleSystem(player.getCenter(), 12, 450,
+                        MadColor.fromString(this.entities[i].fillColor))
+                );
             }
             if (this.entities[i].isOutOfBoundsY() || collected) {
                 this.entities.splice(i, 1);
+            }
+        }
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+            this.particles[i].update();
+            if (this.particles[i].isDone()) {
+                this.particles.splice(i, 1);
             }
         }
     }
