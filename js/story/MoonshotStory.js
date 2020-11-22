@@ -18,7 +18,9 @@ class MoonshotStory {
             3: "You have to help me pick up the parts I lost when I crashed on the lunar surface! Can you do that for me?",
             4: "Great! You can move left and right with the arrow keys on your keyboard.",
             5: "Move over objects to pick them up. But be careful! There are many dangerous things on this strange moon...",
-            6: "Thank you so much! You saved my life!"
+            6: "Thank you so much! You saved my life!",
+            7: "Let's continue...",
+            8: "We have reached the end. Go back to the main menu. You can replay single levels via level selection."
         };
 
         /**
@@ -27,12 +29,19 @@ class MoonshotStory {
          * ==> last message + 1 
          */
         this.entryBreakpoints = [
-            6
+            6, 8
         ];
 
         this.entryIndex = 5;
 
         this.continueFromBreakpoint = 0;
+    }
+
+    /**
+     * 
+     */
+    isEndReached() {
+        return this.entryIndex >= Object.keys(this.entries).length;
     }
 
     /**
@@ -66,4 +75,10 @@ class MoonshotStory {
         return result;
     }
 
+}
+
+MoonshotStory.LevelStoryMapping = {
+    0: 0,
+    1: 6,
+    2: 8
 }

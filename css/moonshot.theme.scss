@@ -37,3 +37,12 @@ body {
 .rendering-canvas {
     border: 1px solid $finalBorderColor;
 }
+
+.card {
+    background: $translucentBackgroundColor;
+    border: 1px solid $foregroundColor;
+}
+
+.level-card {
+    cursor: pointer;
+}

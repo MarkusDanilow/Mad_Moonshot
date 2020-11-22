@@ -72,6 +72,7 @@ class MoonshotApplication {
         this.eventHandler.init();
         this.storyModule = new MoonshotStory();
         this.timer = new TimerUtil();
+        this.sounds = new SoundModule();
         this.level = null;
     }
 
@@ -85,8 +86,13 @@ class MoonshotApplication {
     /**
      * 
      */
-    startGameFromMainMenu() {
+    startGameFromMainMenu(levelIndex = 0, storyIndex = 0) {
+        if (this.level < 0 || storyIndex < 0) return;
         this.ui.hideMainMenu();
+        this.levelIndex = levelIndex;
+        this.storyModule.entryIndex = storyIndex;
+        this.storyModule.continueAfterBreakpoint();
+        this.ui.toggleDialogButtons(false);
         MoonshotApplication.INSTANCE.gameLoop();
         MoonshotApplication.INSTANCE.startStoryTelling();
     }
@@ -115,6 +121,11 @@ class MoonshotApplication {
         } else {
             this.showDialogBox();
             this.ui.renderDialogText(this.storyModule.next());
+            if (this.storyModule.isEndReached()) {
+                this.ui.toggleDialogButtons(true);
+            } else {
+                this.ui.toggleDialogButtons(false);
+            }
         }
     }
 
@@ -170,6 +181,13 @@ class MoonshotApplication {
     /**
      * 
      */
+    getSounds() {
+        return this.sounds;
+    }
+
+    /**
+     * 
+     */
     gameLoop() {
 
         let game = MoonshotApplication.INSTANCE;
@@ -204,7 +222,6 @@ class MoonshotApplication {
         if (!this.tryAgain) {
             this.levelIndex++;
         }
-        // this.level = Level.createLevelByLevelIndex(this.levelIndex);
         this.level = new Level(this.levelIndex);
         this.level.registerGameplayEvents();
         this.gameplayEnabled = true;
@@ -227,7 +244,7 @@ class MoonshotApplication {
             this.ui.renderDialogText("Great, you did it!");
         } else {
             this.tryAgain = true;
-            this.ui.renderDialogText("Too bad, unfortunately you did not make it!Give it another try...");
+            this.ui.renderDialogText("Too bad, unfortunately you did not make it! Give it another try...");
 
         }
     }

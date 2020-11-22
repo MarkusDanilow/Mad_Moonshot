@@ -12,5 +12,11 @@ ItemCollectionConstants.items = {
             amount: 0,
             required: false
         }
+    },
+    2: {
+        "Screw": {
+            amount: 2,
+            required: true
+        }
     }
 }

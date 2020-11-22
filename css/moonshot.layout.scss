@@ -1,6 +1,6 @@
 html,
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .dialog-box {
@@ -24,5 +24,17 @@ body {
     margin: auto;
     height: 300px;
     z-index: 2000;
+    display: none;
+}
+
+#main-menu-canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+#menu-level-1_level-selection {
     display: none;
 }

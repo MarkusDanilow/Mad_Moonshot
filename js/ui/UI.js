@@ -101,6 +101,12 @@ class UI {
      */
     showMainMenu() {
         this.showElement($('#main-menu-container'));
+        let canvas = $('#main-menu-canvas')[0];
+        canvas.width = TransformationUtil.TARGET_RES.width;
+        canvas.height = TransformationUtil.TARGET_RES.height;
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     /**
@@ -108,6 +114,36 @@ class UI {
      */
     hideMainMenu() {
         this.hideElement($('#main-menu-container'));
+    }
+
+    /**
+     * 
+     */
+    generateLevelSelection() {
+        let parent = $('#level-selection-container');
+        parent.empty();
+        for (let j in Object.keys(MoonshotStory.LevelStoryMapping)) {
+            let i = parseInt(j);
+            let levelCol = HtmlGenerator.generateDiv(parent, 'level-selection_level-' + i, 'col-12 col-sm-6 col-lg-4 text-center', true);
+            let card = HtmlGenerator.generateDiv(levelCol, '', 'card m-3 level-card', true, { 'mad-level-index': i, 'mad-story-index': MoonshotStory.LevelStoryMapping[i] });
+            let body = HtmlGenerator.generateDiv(card, '', 'card-body', true);
+            let heading = HtmlGenerator.generateHeading(body, '', '', true, { type: 'h3', text: 'Level ' + (i + 1) });
+            card.click(function(e) {
+                let level = parseInt($(this).attr('mad-level-index'));
+                let story = parseInt($(this).attr('mad-story-index'));
+                MoonshotApplication.INSTANCE.startGameFromMainMenu(level, story);
+            });
+        }
+    }
+
+    toggleDialogButtons(isEnd = false) {
+        if (isEnd) {
+            $('#story-next').addClass("d-none");
+            $('#back-to-main-menu-from-game').removeClass('d-none');
+        } else {
+            $('#story-next').removeClass("d-none");
+            $('#back-to-main-menu-from-game').addClass('d-none');
+        }
     }
 
 }

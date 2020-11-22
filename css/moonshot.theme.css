@@ -30,4 +30,13 @@ body {
 .rendering-canvas {
   border: 1px solid #000;
 }
+
+.card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #fff;
+}
+
+.level-card {
+  cursor: pointer;
+}
 /*# sourceMappingURL=moonshot.theme.css.map */

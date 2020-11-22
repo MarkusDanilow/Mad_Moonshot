@@ -25,6 +25,7 @@
     <script src="lib/bootstrap/bootstrap.min.js"></script>
     <script src="lib/htmlgenerator/HtmlGenerator.js"></script>
     <script src="lib/perlin/perlin.js"></script>
+    <script src="lib/particles-js/particles.min.js"></script>
 
     <!-- loading custom scripts -->
     <script src="js/core/DependencyLoader.js"></script>
@@ -45,24 +46,44 @@
     </div>
 
     <div class="container-fluid" id="main-menu-container">
+        <canvas id="main-menu-canvas" class="w-100 h-100"></canvas>
+
         <div class="row">
             <div class="col-12 col-lg-8 mx-auto pb-5">
                 <h2 class="text-center">Aly's Journey</h2>
             </div>
-            <div class="col-12 col-lg-8 mx-auto">
-                <div class="main-menu-container row">
+            <div class="col-12 col-lg-8 mx-auto" id="menu-level-0">
+                <div class="main-menu-container row m-3">
                     <div class="col-12">
                         <button class="btn btn-outline-secondary btn-block" id="start-game-btn">Start Game</button>
                     </div>
                 </div>
+                <div class="main-menu-container row m-3">
+                    <div class="col-12">
+                        <button class="btn btn-outline-secondary btn-block" id="show-levels-btn">Select Level</button>
+                    </div>
+                </div>
+                <div class="main-menu-container row m-3">
+                    <div class="col-12">
+                        <button class="btn btn-outline-secondary btn-block" id="show-credits-btn">Credits</button>
+                    </div>
+                </div>
             </div>
+
+            <div class="col-12 col-lg-8 mx-auto text-center" id="menu-level-1_level-selection">
+                <button class="btn btn-outline-secondary" id="back-to-main-menu">back to main menu</button>
+                <div class="row m-3" id="level-selection-container">
+                </div>
+            </div>
+
         </div>
+
     </div>
 
     <canvas class="rendering-canvas" id="rendering-canvas"></canvas>
     <audio id="explosion-sound" src="sounds/explosion_001.wav"></audio>
     <audio id="collect-sound" src="sounds/collect_001.wav"></audio>
-    <audio id="background-music" src="sounds/music_track_001.mp3" loop></audio>
+    <audio id="background-music" src="sounds/music_track_001.mp3" loop autoplay></audio>
 
     <div class="container-fluid p-0 m-0">
 
@@ -81,7 +102,8 @@
                         <div class="col-10 text-justify" id="dialog-box-text">
                         </div>
                         <div class="col-12 text-right">
-                            <button class="btn btn-outline-secondary" id="story-next">continue...</button>
+                            <button class="btn btn-outline-secondary d-none" id="story-next">continue...</button>
+                            <button class="btn btn-outline-secondary d-none" id="back-to-main-menu-from-game">back to main menu</button>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ class Level {
         this.keysPressed = Array(256).fill(false);
         this.entityManager = new EntityManager(this);
         this.initConfiguration();
+        this.stars = new StarGenerator(100, this.changeRate);
     }
 
     /**
@@ -97,10 +98,10 @@ class Level {
     collect(item) {
         if (item.isDangerous()) {
             $('#rendering-canvas').effect("shake");
-            $('#explosion-sound')[0].play();
+            MoonshotApplication.INSTANCE.getSounds().playExplosionSound();
             this.player.health -= item.damage;
         } else {
-            $('#collect-sound')[0].play();
+            MoonshotApplication.INSTANCE.getSounds().playCollectSound();
             let type = item.type;
             this.needsToCollect[type].amount--;
         }
@@ -112,6 +113,7 @@ class Level {
     update() {
         this.updateSpawnCountDown();
         this.entityManager.update();
+        this.stars.update();
 
         for (let i = 0; i < this.keysPressed.length; i++) {
             if (this.keysPressed[i]) {
@@ -136,6 +138,7 @@ class Level {
         if (!ctx) return;
         this.entityManager.render(ctx);
         this.player.render(ctx);
+        this.stars.render(ctx);
 
         const font = "Lucida Console";
         const baseFontSize = 25;
@@ -171,6 +174,7 @@ class Level {
     unregisterGameplayEvents() {
         $(window).unbind("keydown");
         $(window).unbind("keyup");
+        this.stars = null;
     }
 
 }

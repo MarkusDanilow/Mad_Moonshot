@@ -58,12 +58,12 @@ DependencyLoader.DependencyDirectories = {
 };
 
 DependencyLoader.DependencyModules = {
-    core: ["TimerUtil"],
+    core: ["TimerUtil", "SoundModule"],
     graphics: ["TransformationUtil", "MadColor", "BaseRenderer", "ParticleSystem"],
     ui: ["UI"],
     events: ["EventHandler"],
     story: ["MoonshotStory"],
     levels: ["ItemCollectionConstants", "LevelConfigurator", "Level"],
-    entities: ["EntityManager", "Entity", "Player"],
+    entities: ["EntityManager", "Entity", "Star", "Player"],
     items: ["Item", "ScrewItem", "BombItem"]
 }
