@@ -7,7 +7,11 @@ class LevelConfigurator {
     configure(level) {
         let scope = this;
 
-        const changeRate = Math.pow(Math.log10(level.levelId + 1), 2) / 1.5;
+        let levelIndex = level.levelId;
+
+        //const changeRate = Math.pow(Math.log10(level.levelId + 1), 2) / 1.5;
+        const changeRate = (Math.log(10 * (levelIndex * levelIndex))) / 50;
+        level.player.speed = changeRate * 0.9;
 
         let config = {
             eventHandlers: scope.baseEventHandlers,
@@ -22,6 +26,11 @@ class LevelConfigurator {
                 }
             },
             needsToCollect: {}
+        };
+
+        config.needsToCollect["Screw"] = {
+            amount: Math.floor(levelIndex * 5 * 1.1),
+            required: true
         };
 
         config = this.configureEventHandlers(config, level);
@@ -50,7 +59,8 @@ class LevelConfigurator {
      * @param {*} level 
      */
     configureCollectableItems(config, level) {
-        if (!config) return;
+        if (!config) return config;
+        if (!level || !ItemCollectionConstants.items[level.levelId]) return config;
         config.needsToCollect = {};
         for (let item in ItemCollectionConstants.items[level.levelId]) {
             config.needsToCollect[item] = {};

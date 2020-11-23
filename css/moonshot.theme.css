@@ -6,6 +6,10 @@ body {
   background: #000;
 }
 
+.loading-screen {
+  background: #000;
+}
+
 .dialog-box {
   border-radius: 10px;
   border: 1px solid #fff;

@@ -55,7 +55,7 @@ class MoonshotApplication {
                 if (MoonshotApplication.INSTANCE.canStartGame) {
                     MoonshotApplication.INSTANCE.startGameFromMainMenu();
                 } else {
-                    MoonshotApplication.INSTANCE.gotoMainMenu();
+                    this.ui.showElement($('#loading-done-screen'));
                 }
             }
         });
@@ -80,17 +80,19 @@ class MoonshotApplication {
      * 
      */
     gotoMainMenu() {
+        this.ui.hideElement($('#loading-done-screen'));
+        this.sounds.playBackgroundMusic();
         this.ui.showMainMenu();
     }
 
     /**
      * 
      */
-    startGameFromMainMenu(levelIndex = 0, storyIndex = 0) {
-        if (this.level < 0 || storyIndex < 0) return;
+    startGameFromMainMenu(levelIndex = 0) {
+        if (this.level < 0) return;
         this.ui.hideMainMenu();
         this.levelIndex = levelIndex;
-        this.storyModule.entryIndex = storyIndex;
+        this.storyModule.entryIndex = MoonshotStory.LevelStoryMapping[levelIndex];
         this.storyModule.continueAfterBreakpoint();
         this.ui.toggleDialogButtons(false);
         MoonshotApplication.INSTANCE.gameLoop();

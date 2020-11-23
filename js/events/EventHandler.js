@@ -20,6 +20,10 @@ class EventHandler {
             window.location.reload();
         });
 
+        $('#to-main-menu-from-loading').click((e) => {
+            MoonshotApplication.INSTANCE.gotoMainMenu();
+        });
+
         $('#story-next').click((e) => {
             let game = MoonshotApplication.INSTANCE;
             if (game.tryAgain) {

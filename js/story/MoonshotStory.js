@@ -32,6 +32,12 @@ class MoonshotStory {
             6, 8
         ];
 
+        for (let i = 9, j = 3; i < 100, j < 100; i++, j++) {
+            this.entries[i] = "Story Entry " + i;
+            this.entryBreakpoints.push(i);
+            MoonshotStory.LevelStoryMapping[j] = i;
+        }
+
         this.entryIndex = 5;
 
         this.continueFromBreakpoint = 0;

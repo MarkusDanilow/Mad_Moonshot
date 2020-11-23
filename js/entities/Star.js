@@ -51,7 +51,6 @@ class Star extends Entity {
 
         this.alpha = this.adder / this.limit;
 
-        //move,  to left
         this.pos.y += (this.speed.y * MoonshotApplication.INSTANCE.getTimer().getDelta());
         if (this.pos.y > TransformationUtil.TARGET_RES.height + 10) {
             this.pos.y = -10;

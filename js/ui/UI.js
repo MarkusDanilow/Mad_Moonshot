@@ -122,16 +122,17 @@ class UI {
     generateLevelSelection() {
         let parent = $('#level-selection-container');
         parent.empty();
-        for (let j in Object.keys(MoonshotStory.LevelStoryMapping)) {
+        let keys = Object.keys(MoonshotStory.LevelStoryMapping);
+        for (let j in keys) {
             let i = parseInt(j);
             let levelCol = HtmlGenerator.generateDiv(parent, 'level-selection_level-' + i, 'col-12 col-sm-6 col-lg-4 text-center', true);
-            let card = HtmlGenerator.generateDiv(levelCol, '', 'card m-3 level-card', true, { 'mad-level-index': i, 'mad-story-index': MoonshotStory.LevelStoryMapping[i] });
+            let card = HtmlGenerator.generateDiv(levelCol, '', 'card m-3 level-card', true, { 'mad-level-index': i });
             let body = HtmlGenerator.generateDiv(card, '', 'card-body', true);
-            let heading = HtmlGenerator.generateHeading(body, '', '', true, { type: 'h3', text: 'Level ' + (i + 1) });
+            let cardText = (i >= keys.length - 1) ? 'The End' : ('Level ' + (i + 1));
+            HtmlGenerator.generateHeading(body, '', '', true, { type: 'h3', text: cardText });
             card.click(function(e) {
                 let level = parseInt($(this).attr('mad-level-index'));
-                let story = parseInt($(this).attr('mad-story-index'));
-                MoonshotApplication.INSTANCE.startGameFromMainMenu(level, story);
+                MoonshotApplication.INSTANCE.startGameFromMainMenu(level);
             });
         }
     }

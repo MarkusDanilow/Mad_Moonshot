@@ -3,6 +3,7 @@ class SoundModule {
     constructor() {
         this.collectSound = $('#collect-sound')[0];
         this.explosionSound = $('#explosion-sound')[0];
+        this.bgMusic = $('#background-music')[0];
     }
 
     playSound(sound) {
@@ -23,6 +24,10 @@ class SoundModule {
 
     playCollectSound() {
         this.playSound(this.collectSound);
+    }
+
+    playBackgroundMusic() {
+        this.playSound(this.bgMusic);
     }
 
 }
