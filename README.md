@@ -1,19 +1,24 @@
-# Mad_Moonshot
+# Mad Moonshot 
 
-## Concept
+## Conecpt (German)
 
-The game starts when you find Aly, a stranded alien. 
-His spaceship had a breakdown and now he needs to repair it to continue his journey through the galaxy.
+Man spielt einen Astronauten (Aly), der im All gestrandet ist. 
+Das Letzte, woran er sich erinnern kann, ist dass er auf einer Mission zu einem weit entfernten Mond zusammen mit seiner Crew war. 
+Doch von dieser fehlt jede Spur - ebenso wie von seinem Raumschiff. 
 
-As you find him, he asks you for help. So you have to collect the items on the lunar surface to help him 
-repair his spaceship. 
+Zum Glück hat er seinen Raumanzug an mit genügend Sauerstoffreserven. 
 
-When you have collected all items and the ship is repaired, he tells you that he is on his journey through the galaxy in order to find his home planet and his family. On his way from moon to moon he collects different items which he brings home to his family.
-He wants you to come with him, since you seem to be alone as well.
-By the way: The player will now get any information where you (in game) come from or who you are - that's top secret!
+Um sich herum sieht er jede Menge Schrott fliegen. Er hat die böse Befürchtung, dass das Raumschiff zerstört wurde und dass es seine Crew nicht geschafft haben könnte. Doch was könnte ihnen und ihrem Schiff zugesoßen sein. 
 
-From now on both of you fly from moon to moon to collect different items and resources. 
-Sometimes you have to defend yourselves against evil space pirates and other creatures. 
-You need mre resources to unlock crafting blueprints to further improve your spaceship.
+IM ersten Level muss er erstmal lernen, sich fortzubewege. Sein Raumanzug hat hierzu Düsen, mit denen er nach links und rechts (Pfeiltasten) schweben kann. Nach kurzer Zeit entdeckt er so das, was von ihrem Schiff noch übrig geblieben ist. 
+Glücklierweise sind Teile des Schiffes noch gut erhalten. Am wichtigsten: Die Lebenserhaltungssysteme. So kann er nach jedem Außeneinsatz zurück an Bord, um seinen Sauerstoff wieder aufzuladen. Doch ewig wird das so auch nicht funktionieren...
 
-After ZZZ levels you arrive at Aly's home planet and meet his family.
+Er beschließt, das Schiff wieder zu reparieren. So schwebt er mit seinem Raumanzug um den MOnad herum und sammelt alle nötigen Teile aus den Trümmern zusammen, die er für die Reparatur benötigt. 
+
+Mit jedem Außeneinsatz wird es schwieriger: er muss sich immer weiter von seinem Schiff weg bewegen, und setzt sich so immer größeren Gefahren aus... 
+
+Aus den Teilen, die er findet, konstruiert er sich immer mehr nützliche Power-Ups, um schneller noch mehr Teile sammeln und so den Herausforderungen des kalten und erbarmungslosen Weltraums trotzen zu können. 
+
+---
+
+Am Ende der aktuell generierten 100 Level steht die Fertigstellung des Schiffs - emotionale Erleichterung beim Protagonisten und beim Spieler hoffentlich auch. 
