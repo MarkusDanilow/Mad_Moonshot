@@ -79,9 +79,12 @@ class MoonshotApplication {
     /**
      * 
      */
-    gotoMainMenu() {
+    gotoMainMenu(startBgMusic = true) {
         this.ui.hideElement($('#loading-done-screen'));
-        this.sounds.playBackgroundMusic();
+        this.ui.hideElement($('#escape-btn'));
+        if (startBgMusic) {
+            this.sounds.playBackgroundMusic();
+        }
         this.ui.showMainMenu();
     }
 
@@ -91,6 +94,7 @@ class MoonshotApplication {
     startGameFromMainMenu(levelIndex = 0) {
         if (this.level < 0) return;
         this.ui.hideMainMenu();
+        this.ui.showElement($('#escape-btn'));
         this.levelIndex = levelIndex;
         this.storyModule.entryIndex = MoonshotStory.LevelStoryMapping[levelIndex];
         this.storyModule.continueAfterBreakpoint();

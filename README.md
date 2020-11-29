@@ -10,10 +10,10 @@ Zum Glück hat er seinen Raumanzug an mit genügend Sauerstoffreserven.
 
 Um sich herum sieht er jede Menge Schrott fliegen. Er hat die böse Befürchtung, dass das Raumschiff zerstört wurde und dass es seine Crew nicht geschafft haben könnte. Doch was könnte ihnen und ihrem Schiff zugesoßen sein. 
 
-IM ersten Level muss er erstmal lernen, sich fortzubewege. Sein Raumanzug hat hierzu Düsen, mit denen er nach links und rechts (Pfeiltasten) schweben kann. Nach kurzer Zeit entdeckt er so das, was von ihrem Schiff noch übrig geblieben ist. 
-Glücklierweise sind Teile des Schiffes noch gut erhalten. Am wichtigsten: Die Lebenserhaltungssysteme. So kann er nach jedem Außeneinsatz zurück an Bord, um seinen Sauerstoff wieder aufzuladen. Doch ewig wird das so auch nicht funktionieren...
+IM ersten Level muss er erstmal lernen, sich fortzubewegen. Sein Raumanzug hat hierzu Düsen, mit denen er nach links und rechts (Pfeiltasten) schweben kann. Nach kurzer Zeit entdeckt er so das, was von ihrem Schiff noch übrig geblieben ist. 
+Glücklicherweise sind Teile des Schiffes noch gut erhalten. Am wichtigsten: Die Lebenserhaltungssysteme. So kann er nach jedem Außeneinsatz zurück an Bord, um seinen Sauerstoff wieder aufzuladen. Doch ewig wird das so auch nicht funktionieren...
 
-Er beschließt, das Schiff wieder zu reparieren. So schwebt er mit seinem Raumanzug um den MOnad herum und sammelt alle nötigen Teile aus den Trümmern zusammen, die er für die Reparatur benötigt. 
+Er beschließt, das Schiff wieder zu reparieren. So schwebt er mit seinem Raumanzug um den Mond herum und sammelt alle nötigen Teile aus den Trümmern zusammen, die er für die Reparatur benötigt. 
 
 Mit jedem Außeneinsatz wird es schwieriger: er muss sich immer weiter von seinem Schiff weg bewegen, und setzt sich so immer größeren Gefahren aus... 
 
@@ -22,3 +22,16 @@ Aus den Teilen, die er findet, konstruiert er sich immer mehr nützliche Power-U
 ---
 
 Am Ende der aktuell generierten 100 Level steht die Fertigstellung des Schiffs - emotionale Erleichterung beim Protagonisten und beim Spieler hoffentlich auch. 
+
+
+----
+
+## Story (German) 
+
+Wo... Wo bin ich? 
+Das Letzte woran ich mich erinnern kann, ist, dass...
+... ich mit meiner Crew auf der Reise zu einem weit entfernten Mond war.
+Wir waren viele Monate mit unserem Raumschiff unterwegs durch die gesamte Galaxis.
+Wo sind alle? 
+Was ist passiert...? 
+Wo ist unser Schiff? 

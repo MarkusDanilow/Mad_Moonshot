@@ -24,6 +24,10 @@ class EventHandler {
             MoonshotApplication.INSTANCE.gotoMainMenu();
         });
 
+        $('#escape-btn').click((e) => {
+            MoonshotApplication.INSTANCE.gotoMainMenu(false);
+        });
+
         $('#story-next').click((e) => {
             let game = MoonshotApplication.INSTANCE;
             if (game.tryAgain) {
@@ -38,7 +42,12 @@ class EventHandler {
         });
 
         $('#show-credits-btn').click((e) => {
-            alert("feature coming soon... :) ");
+            let ui = MoonshotApplication.INSTANCE.getUI();
+            // $('#credits-text-container').stop().animate({ top: $(window).height() });
+            ui.hideElement($('#menu-level-0'), () => {
+                ui.showElement($('#menu-level-1_credits'));
+                //  $('#credits-text-container').stop().animate({ top: -500 }, 5000);
+            });
         });
 
         $('#show-levels-btn').click((e) => {
@@ -55,7 +64,13 @@ class EventHandler {
             ui.hideElement($('#menu-level-1_level-selection'), () => {
                 ui.showElement($('#menu-level-0'));
             });
+        });
 
+        $('#back-to-main-menu-credits').click((e) => {
+            let ui = MoonshotApplication.INSTANCE.getUI();
+            ui.hideElement($('#menu-level-1_credits'), () => {
+                ui.showElement($('#menu-level-0'));
+            });
         });
 
         $('#back-to-main-menu-from-game').click((e) => {

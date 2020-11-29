@@ -39,7 +39,9 @@ body {
   top: 0;
 }
 
-#menu-level-1_level-selection {
+#menu-level-1_level-selection,
+#menu-level-1_credits,
+#escape-btn {
   display: none;
 }
 /*# sourceMappingURL=moonshot.layout.css.map */
