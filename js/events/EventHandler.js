@@ -21,6 +21,7 @@ class EventHandler {
         });
 
         $('#to-main-menu-from-loading').click((e) => {
+            // MoonshotApplication.INSTANCE.getUI().activateFullscreen();
             MoonshotApplication.INSTANCE.gotoMainMenu();
         });
 
@@ -43,10 +44,14 @@ class EventHandler {
 
         $('#show-credits-btn').click((e) => {
             let ui = MoonshotApplication.INSTANCE.getUI();
-            // $('#credits-text-container').stop().animate({ top: $(window).height() });
+            let target = $('#credits-text-container');
+            target.stop().animate({ marginTop: $(window).height() + 10 });
+            ui.hideElement($('#menu-title'));
             ui.hideElement($('#menu-level-0'), () => {
                 ui.showElement($('#menu-level-1_credits'));
-                //  $('#credits-text-container').stop().animate({ top: -500 }, 5000);
+                target.stop().animate({ marginTop: -target.height() }, 30000, "linear", () => {
+                    $('#back-to-main-menu-credits').click();
+                });
             });
         });
 
@@ -69,6 +74,7 @@ class EventHandler {
         $('#back-to-main-menu-credits').click((e) => {
             let ui = MoonshotApplication.INSTANCE.getUI();
             ui.hideElement($('#menu-level-1_credits'), () => {
+                ui.showElement($('#menu-title'));
                 ui.showElement($('#menu-level-0'));
             });
         });

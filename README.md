@@ -32,6 +32,6 @@ Wo... Wo bin ich?
 Das Letzte woran ich mich erinnern kann, ist, dass...
 ... ich mit meiner Crew auf der Reise zu einem weit entfernten Mond war.
 Wir waren viele Monate mit unserem Raumschiff unterwegs durch die gesamte Galaxis.
-Wo sind alle? 
-Was ist passiert...? 
-Wo ist unser Schiff? 
+Wo sind alle? Was ist passiert...? Wo ist unser Schiff? 
+Ich muss die anderen und das Schiff finden! 
+Zum Glück ist mein Raumanzug noch heile. Der Joystick an meiner linken Hand sieht gut aus. Wenn jetzt die Steuerdüsen an meinem Anzug noch funktionieren, dann kann ich mich mit den Pfeiltasten zumindest schon mal nach links und rechts bewegen... 

@@ -7,6 +7,50 @@ class UI {
         this.dialogAnimationInterval = null;
     }
 
+
+    /**
+     * 
+     */
+    activateFullscreen() {
+        let elem = document.body;
+        if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+            if (elem.requestFullScreen) {
+                elem.requestFullScreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullScreen) {
+                elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    }
+
+    /**
+     * 
+     */
+    deactivateFullscreen() {
+        if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+
     /**
      * 
      * @param {*} el 
@@ -64,7 +108,7 @@ class UI {
     renderDialogText(text, renderTime = -1) {
         if (!text) return;
         this.clearDialogBox();
-        let delta_i = renderTime > -1 ? (renderTime / text.length) : 20;
+        let delta_i = renderTime > -1 ? (renderTime / text.length) : 35;
         let scope = this;
         this.dialogAnimationInterval = setInterval(() => {
             let currentText = $('#dialog-box-text').text();
@@ -101,12 +145,7 @@ class UI {
      */
     showMainMenu() {
         this.showElement($('#main-menu-container'));
-        let canvas = $('#main-menu-canvas')[0];
-        canvas.width = TransformationUtil.TARGET_RES.width;
-        canvas.height = TransformationUtil.TARGET_RES.height;
-        let ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#000";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        this.showElement($('.main-menu-animated-background'));
     }
 
     /**
@@ -114,6 +153,7 @@ class UI {
      */
     hideMainMenu() {
         this.hideElement($('#main-menu-container'));
+        this.hideElement($('.main-menu-animated-background'));
     }
 
     /**

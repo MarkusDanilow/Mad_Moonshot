@@ -19,6 +19,7 @@ body {
   right: 0;
   bottom: 0;
   margin: auto;
+  display: none;
 }
 
 #main-menu-container {
@@ -41,7 +42,28 @@ body {
 
 #menu-level-1_level-selection,
 #menu-level-1_credits,
-#escape-btn {
+#escape-btn,
+.main-menu-animated-background {
   display: none;
+}
+
+#menu-level-1_credits {
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  top: 0;
+}
+
+.main-menu-animated-background {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
 }
 /*# sourceMappingURL=moonshot.layout.css.map */

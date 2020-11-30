@@ -25,7 +25,6 @@
     <script src="lib/bootstrap/bootstrap.min.js"></script>
     <script src="lib/htmlgenerator/HtmlGenerator.js"></script>
     <script src="lib/perlin/perlin.js"></script>
-    <script src="lib/particles-js/particles.min.js"></script>
 
     <!-- loading custom scripts -->
     <script src="js/core/DependencyLoader.js"></script>
@@ -49,16 +48,16 @@
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-12">
                 <button class="btn btn-outline-secondary" id="to-main-menu-from-loading">Let's GO!</button>
+                <p class="pt-5 font-italic w-50 mx-auto">Note: for a better experience we will activate the full screen mode of your internet browser. You can exit this mode at any time by pressing the escape key.</p>
             </div>
         </div>
     </div>
 
     <div class="container-fluid" id="main-menu-container">
-        <canvas id="main-menu-canvas" class="w-100 h-100"></canvas>
 
         <div class="row">
             <div class="col-12 col-lg-8 mx-auto pb-5">
-                <h2 class="text-center">Aly's Journey</h2>
+                <h2 class="text-center" id="menu-title">Aly's Journey</h2>
             </div>
             <div class="col-12 col-lg-8 mx-auto" id="menu-level-0">
                 <div class="main-menu-container row m-3">
@@ -85,8 +84,10 @@
             </div>
 
             <div class="col-12 col-lg-8 mx-auto text-center" id="menu-level-1_credits">
-                <button class="btn btn-outline-secondary" id="back-to-main-menu-credits">back to main menu</button>
-                <div class="w-100 text-center mt-5" id="credits-text-container">
+                <button class="btn btn-secondary fixed-top m-3" id="back-to-main-menu-credits">
+                    <i class="fas fa-chevron-left"></i> return
+                </button>
+                <div class="w-100 text-center" id="credits-text-container">
 
                     <p class="m-0 text-dark">Concept</p>
                     <p class="font-weight-bold">Markus Danilow</p>
@@ -108,6 +109,7 @@
                     <p class="font-weight-bold">"Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org</p>
                     <p class="font-weight-bold">Collect Sound "Videogame Menu Highlight" by Fupicat on Freesound.org</p>
                     <p class="font-weight-bold">Music "Electronic music track X1" by "frankum" on Freesound.org</p>
+                    <p class="font-weight-bold">Music "film for a music.wav" by "evanjones4" on Freesound.org</p>
 
                 </div>
 
@@ -121,7 +123,8 @@
     <canvas class="rendering-canvas" id="rendering-canvas"></canvas>
     <audio id="explosion-sound" src="sounds/explosion_001.wav"></audio>
     <audio id="collect-sound" src="sounds/collect_001.wav"></audio>
-    <audio id="background-music" src="sounds/music_track_001.mp3" loop></audio>
+    <audio id="background-music-inspiration" src="sounds/music_track_001.mp3" loop></audio>
+    <audio id="background-music-quiet" src="sounds/music_track_002.mp3" loop></audio>
 
     <div class="container-fluid p-0 m-0">
 
@@ -176,11 +179,13 @@
     </div>
 
 
+    <script src="lib/particles-js/particles.min.js"></script>
+
     <script>
         $(document).ready(function() {
             var app = new MoonshotApplication();
             app.start(() => {
-
+                // nothing to do right here at the moment
             });
         });
     </script>

@@ -12,12 +12,12 @@ class MoonshotStory {
          * Theese are the entries that tell the story bit by bit
          */
         this.entries = {
-            0: "Oh, hello there. How lucky you found me!",
-            1: "My name is Aly.",
-            2: "I had a breakdown on my spaceship while I was on my journey through the galaxy and got stranded on a lonely moon.",
-            3: "You have to help me pick up the parts I lost when I crashed on the lunar surface! Can you do that for me?",
-            4: "Great! You can move left and right with the arrow keys on your keyboard.",
-            5: "Move over objects to pick them up. But be careful! There are many dangerous things on this strange moon...",
+            0: "Where... Where am I? ",
+            1: "The last thing I can remember is that...",
+            2: "... I was on a journey to a distant moon with my crew. We spent many months in our spaceship, traveling all over the galaxy.",
+            3: "Where is everybody? What happened? Where is our ship? ",
+            4: "I must find the others and the ship! ",
+            5: "Fortunately, my spacesuit is still intact. The joystick on my left hand looks good. If the control jets on my suit still work, I can at least move left and right with the arrow keys... ",
             6: "Thank you so much! You saved my life!",
             7: "Let's continue...",
             8: "We have reached the end. Go back to the main menu. You can replay single levels via level selection."
@@ -32,7 +32,7 @@ class MoonshotStory {
             6, 8
         ];
 
-        for (let i = 9, j = 3; i < 100, j < 100; i++, j++) {
+        for (let i = 9, j = 3; i < 10, j < 10; i++, j++) {
             this.entries[i] = "Story Entry " + i;
             this.entryBreakpoints.push(i);
             MoonshotStory.LevelStoryMapping[j] = i;

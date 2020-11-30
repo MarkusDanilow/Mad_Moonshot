@@ -82,8 +82,10 @@ class MoonshotApplication {
     gotoMainMenu(startBgMusic = true) {
         this.ui.hideElement($('#loading-done-screen'));
         this.ui.hideElement($('#escape-btn'));
+        this.ui.hideElement($('.rendering-canvas'));
+        this.hideDialogBox();
         if (startBgMusic) {
-            this.sounds.playBackgroundMusic();
+            this.sounds.playBackgroundMusic_Quiet();
         }
         this.ui.showMainMenu();
     }
@@ -225,6 +227,7 @@ class MoonshotApplication {
      */
     switchToGameplay() {
         this.hideDialogBox();
+        this.ui.showElement($('.rendering-canvas'));
         if (!this.tryAgain) {
             this.levelIndex++;
         }
@@ -242,6 +245,7 @@ class MoonshotApplication {
         this.level.unregisterGameplayEvents();
         this.level = null;
 
+        this.ui.hideElement($('.rendering-canvas'));
         this.showDialogBox();
 
         if (moveOnInStory) {
