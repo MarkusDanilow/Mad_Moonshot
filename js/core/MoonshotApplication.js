@@ -47,17 +47,19 @@ class MoonshotApplication {
         dl.loadDependencies(() => {
             MoonshotApplication.INSTANCE.setError(null, false);
             MoonshotApplication.INSTANCE.initComponents();
-            if (MoonshotApplication.INSTANCE.errorFlag) {
-                MoonshotApplication.INSTANCE.printErrorAndQuit();
-            } else {
-                if (doneCallback) doneCallback();
-                MoonshotApplication.INSTANCE.ui.hideLoadingScreen();
-                if (MoonshotApplication.INSTANCE.canStartGame) {
-                    MoonshotApplication.INSTANCE.startGameFromMainMenu();
+            MoonshotApplication.INSTANCE.textureLoader.loadTextures(() => {
+                if (MoonshotApplication.INSTANCE.errorFlag) {
+                    MoonshotApplication.INSTANCE.printErrorAndQuit();
                 } else {
-                    this.ui.showElement($('#loading-done-screen'));
+                    if (doneCallback) doneCallback();
+                    MoonshotApplication.INSTANCE.ui.hideLoadingScreen();
+                    if (MoonshotApplication.INSTANCE.canStartGame) {
+                        MoonshotApplication.INSTANCE.startGameFromMainMenu();
+                    } else {
+                        this.ui.showElement($('#loading-done-screen'));
+                    }
                 }
-            }
+            });
         });
     }
 
@@ -74,6 +76,7 @@ class MoonshotApplication {
         this.timer = new TimerUtil();
         this.sounds = new SoundModule();
         this.level = null;
+        this.textureLoader = new TextureManager();
     }
 
     /**
@@ -96,13 +99,15 @@ class MoonshotApplication {
     startGameFromMainMenu(levelIndex = 0) {
         if (this.level < 0) return;
         this.ui.hideMainMenu();
-        this.ui.showElement($('#escape-btn'));
-        this.levelIndex = levelIndex;
-        this.storyModule.entryIndex = MoonshotStory.LevelStoryMapping[levelIndex];
-        this.storyModule.continueAfterBreakpoint();
-        this.ui.toggleDialogButtons(false);
-        MoonshotApplication.INSTANCE.gameLoop();
-        MoonshotApplication.INSTANCE.startStoryTelling();
+        setTimeout(() => {
+            this.ui.showElement($('#escape-btn'));
+            this.levelIndex = levelIndex;
+            this.storyModule.entryIndex = MoonshotStory.LevelStoryMapping[levelIndex];
+            this.storyModule.continueAfterBreakpoint();
+            this.ui.toggleDialogButtons(false);
+            MoonshotApplication.INSTANCE.gameLoop();
+            MoonshotApplication.INSTANCE.startStoryTelling();
+        }, 3000);
     }
 
     /**

@@ -25,9 +25,17 @@ class Entity {
 
     render(ctx) {
         ctx.fillStyle = this.fillColor;
-        let screenPos = MoonshotApplication.INSTANCE.getTransform().convertWorldToPixelCoords(this.position);
-        let screenSize = MoonshotApplication.INSTANCE.getTransform().convertWorldToPixelSize(this.size);
+        let screenPos = this.getScreenPos();
+        let screenSize = this.getScreenSize();
         ctx.fillRect(screenPos.x, screenPos.y, screenSize.width, screenSize.height);
+    }
+
+    getScreenSize() {
+        return MoonshotApplication.INSTANCE.getTransform().convertWorldToPixelSize(this.size);
+    }
+
+    getScreenPos() {
+        return MoonshotApplication.INSTANCE.getTransform().convertWorldToPixelCoords(this.position);
     }
 
     update() {}

@@ -67,6 +67,7 @@ class LevelConfigurator {
             for (let i in ItemCollectionConstants.items[level.levelId][item])
                 config.needsToCollect[item][i] = ItemCollectionConstants.items[level.levelId][item][i];
         }
+        config.startupItems = ItemCollectionConstants.StartupItems[level.levelId];
         return config;
     }
 

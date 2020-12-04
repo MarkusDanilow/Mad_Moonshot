@@ -22,6 +22,13 @@ class Level {
             this[key] = config[key];
         }
         this.respawnCountDown = this.respawnThreshold;
+        for (let startupItemKey in this.startupItems) {
+            let item = this.startupItems[startupItemKey]
+            for (let i = 0; i < item.amount; i++) {
+                let position = item.positions[i];
+                this.entityManager.createEntity(startupItemKey + "Item", position);
+            }
+        }
     }
 
     /**
@@ -75,10 +82,18 @@ class Level {
      * 
      */
     spawnNewEntity() {
+        let spawnableItems = [];
         let keys = Object.keys(this.needsToCollect);
-        let itemType = keys[Math.floor(Math.random() * keys.length)] + "Item";
-        this.entityManager.createEntity(itemType);
-        this.respawnCountDown = this.respawnThreshold;
+        for (let i = 0; i < keys.length; i++) {
+            if (!this.needsToCollect[keys[i]].fixed) {
+                spawnableItems.push(keys[i]);
+            }
+        }
+        if (spawnableItems.length > 0) {
+            let itemType = spawnableItems[Math.floor(Math.random() * spawnableItems.length)] + "Item";
+            this.entityManager.createEntity(itemType);
+            this.respawnCountDown = this.respawnThreshold;
+        }
     }
 
     /**
@@ -114,6 +129,7 @@ class Level {
         this.updateSpawnCountDown();
         this.entityManager.update();
         this.stars.update();
+        this.player.update();
 
         for (let i = 0; i < this.keysPressed.length; i++) {
             if (this.keysPressed[i]) {
@@ -136,9 +152,9 @@ class Level {
      */
     render(ctx) {
         if (!ctx) return;
+        this.stars.render(ctx);
         this.entityManager.render(ctx);
         this.player.render(ctx);
-        this.stars.render(ctx);
 
         const font = "Lucida Console";
         const baseFontSize = 25;

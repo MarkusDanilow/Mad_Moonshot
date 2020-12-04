@@ -7,12 +7,13 @@ class ParticleSystem {
      * @param {*} duration 
      * @param {*} color 
      */
-    constructor(position, particles, duration, color) {
+    constructor(position, particles, duration, color, sprayInfinite = false) {
         this.start = { x: position.x, y: position.y };
         this.particles = particles;
         this.duration = duration;
         this.timePassed = 0;
         this.color = color;
+        this.infinite = sprayInfinite;
         this.init();
     }
 
@@ -71,7 +72,7 @@ class ParticleSystem {
      * 
      */
     isDone() {
-        return this.timePassed >= this.duration;
+        return this.timePassed >= this.duration && !this.infinite;
     }
 
     /**

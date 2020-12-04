@@ -59,11 +59,11 @@ DependencyLoader.DependencyDirectories = {
 
 DependencyLoader.DependencyModules = {
     core: ["TimerUtil", "SoundModule"],
-    graphics: ["TransformationUtil", "MadColor", "BaseRenderer", "ParticleSystem"],
+    graphics: ["TransformationUtil", "TextureManager", "MadColor", "BaseRenderer", "ParticleSystem"],
     ui: ["UI"],
     events: ["EventHandler"],
     story: ["MoonshotStory"],
     levels: ["ItemCollectionConstants", "LevelConfigurator", "Level"],
     entities: ["EntityManager", "Entity", "Star", "Player"],
-    items: ["Item", "ScrewItem", "BombItem"]
+    items: ["Item", "ScrewItem", "BombItem", "FixWayPointItem"]
 }

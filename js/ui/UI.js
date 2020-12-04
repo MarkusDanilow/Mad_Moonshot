@@ -144,6 +144,7 @@ class UI {
      * 
      */
     showMainMenu() {
+        $('#main-menu-container').animate({ marginTop: 35 }, 0);
         this.showElement($('#main-menu-container'));
         this.showElement($('.main-menu-animated-background'));
     }
@@ -152,8 +153,15 @@ class UI {
      * 
      */
     hideMainMenu() {
-        this.hideElement($('#main-menu-container'));
-        this.hideElement($('.main-menu-animated-background'));
+        $('#main-menu-container').animate({ marginTop: $(window).height() * 2 }, {
+            duration: 1250,
+            queue: false,
+            easing: 'easeInBack'
+        });
+        setTimeout(() => {
+            this.hideElement($('#main-menu-container'));
+            this.hideElement($('.main-menu-animated-background'));
+        }, 650);
     }
 
     /**

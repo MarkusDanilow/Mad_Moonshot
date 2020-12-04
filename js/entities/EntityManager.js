@@ -9,12 +9,20 @@ class EntityManager {
     /**
      * 
      */
-    createEntity(type = null) {
+    createEntity(type = null, position = null, size = null) {
         if (!type) return;
         let entity = eval(`new ${type}()`);
-        entity.size = { width: 0.05, height: 0.05 * TransformationUtil.TARGET_RES_RATIO };
-        entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y + entity.size.height * 2;
-        entity.position.x = Math.random() * 2 - TransformationUtil.WORLD_BOUNDS.max_x;
+        if (!size) {
+            entity.size = { width: 0.05, height: 0.05 * TransformationUtil.TARGET_RES_RATIO };
+        } else {
+            entity.size = size;
+        }
+        if (!position) {
+            entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y + entity.size.height * 2;
+            entity.position.x = Math.random() * 2 - TransformationUtil.WORLD_BOUNDS.max_x;
+        } else {
+            entity.position = position;
+        }
         if (entity.position.x >= TransformationUtil.WORLD_BOUNDS.max_x - entity.size.width) {
             entity.position.x = TransformationUtil.WORLD_BOUNDS.max_x - entity.size.width;
         }
@@ -35,7 +43,10 @@ class EntityManager {
         let delta = this.levelReference.getChangeForCurrentTick();
         let player = this.levelReference.player;
         for (let i = this.entities.length - 1; i >= 0; i--) {
-            this.entities[i].moveDown(delta);
+            this.entities[i].update();
+            if (!this.entities[i].isFixed) {
+                this.entities[i].moveDown(delta);
+            }
             let collected = player.collidesWith(this.entities[i]);
             // collection logic
             if (collected) {
