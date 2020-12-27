@@ -17,10 +17,12 @@ class MoonshotStory {
             2: "... I was on a journey to a distant moon with my crew. We spent many months in our spaceship, traveling all over the galaxy.",
             3: "Where is everybody? What happened? Where is our ship? ",
             4: "I must find the others and the ship! ",
-            5: "Fortunately, my spacesuit is still intact. The joystick on my left hand looks good. If the control jets on my suit still work, I can at least move left and right with the arrow keys... ",
-            6: "Thank you so much! You saved my life!",
-            7: "Let's continue...",
-            8: "We have reached the end. Go back to the main menu. You can replay single levels via level selection."
+            5: "Fortunately my space suit is still intact. The joystick on my left hand looks good too. Let's see if the control jets still work and I can steer with the left and right arrow keys...",
+            6: "Great! The control nozzles still work! And with the thruster I can let myself be pushed forward.",
+            7: "So now I can start looking for our ship and the others. Hopefully I will find them soon...",
+            8: "But I have to be careful. There are asteroids floating around everywhere...",
+            9: "...and maybe debris from our spaceship.",
+            10: ""
         };
 
         /**
@@ -29,17 +31,15 @@ class MoonshotStory {
          * ==> last message + 1 
          */
         this.entryBreakpoints = [
-            6, 8
+            6, 10
         ];
 
-        for (let i = 9, j = 3; i < 10, j < 10; i++, j++) {
-            this.entries[i] = "Story Entry " + i;
-            this.entryBreakpoints.push(i);
-            MoonshotStory.LevelStoryMapping[j] = i;
+        MoonshotStory.LevelStoryMapping = { 0: 0 };
+        for (let i = 1; i < this.entryBreakpoints.length; i++) {
+            MoonshotStory.LevelStoryMapping[i] = this.entryBreakpoints[i - 1];
         }
 
-        this.entryIndex = 5;
-
+        this.entryIndex = 0;
         this.continueFromBreakpoint = 0;
     }
 
@@ -83,8 +83,4 @@ class MoonshotStory {
 
 }
 
-MoonshotStory.LevelStoryMapping = {
-    0: 0,
-    1: 6,
-    2: 8
-}
+MoonshotStory.LevelStoryMapping = {}

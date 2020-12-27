@@ -83,6 +83,7 @@ class EventHandler {
             let ui = MoonshotApplication.INSTANCE.getUI();
             ui.hideDialogBox();
             ui.showMainMenu();
+            ui.hideElement($('#escape-btn'));
         });
 
     }

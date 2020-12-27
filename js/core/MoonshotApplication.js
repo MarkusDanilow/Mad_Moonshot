@@ -256,11 +256,11 @@ class MoonshotApplication {
         if (moveOnInStory) {
             this.tryAgain = false;
             this.storyModule.continueAfterBreakpoint();
-            this.ui.renderDialogText("Great, you did it!");
+            // this.ui.renderDialogText("Great, you did it!");
+            this.nextDialog();
         } else {
             this.tryAgain = true;
-            this.ui.renderDialogText("Too bad, unfortunately you did not make it! Give it another try...");
-
+            // this.ui.renderDialogText("Too bad, unfortunately you did not make it! Give it another try...");
         }
     }
 
