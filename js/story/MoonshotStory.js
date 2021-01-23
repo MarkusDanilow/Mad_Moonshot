@@ -22,7 +22,7 @@ class MoonshotStory {
             7: "So now I can start looking for our ship and the others. Hopefully I will find them soon...",
             8: "But I have to be careful. There are asteroids floating around everywhere...",
             9: "...and maybe debris from our spaceship.",
-            10: ""
+            10: "THE END"
         };
 
         /**

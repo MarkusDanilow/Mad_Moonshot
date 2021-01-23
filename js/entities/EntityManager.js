@@ -12,13 +12,15 @@ class EntityManager {
     createEntity(type = null, position = null, size = null) {
         if (!type) return;
         let entity = eval(`new ${type}()`);
-        if (!size) {
-            entity.size = { width: 0.05, height: 0.05 * TransformationUtil.TARGET_RES_RATIO };
-        } else {
-            entity.size = size;
+        if (!entity.size) {
+            if (!size) {
+                entity.size = { width: 0.05, height: 0.05 * TransformationUtil.TARGET_RES_RATIO };
+            } else {
+                entity.size = size;
+            }
         }
         if (!position) {
-            entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y + entity.size.height * 2;
+            entity.position.y = TransformationUtil.WORLD_BOUNDS.min_y;
             entity.position.x = Math.random() * 2 - TransformationUtil.WORLD_BOUNDS.max_x;
         } else {
             entity.position = position;

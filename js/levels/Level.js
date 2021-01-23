@@ -29,6 +29,13 @@ class Level {
                 this.entityManager.createEntity(startupItemKey + "Item", position);
             }
         }
+        // check for timer ==> time to survive
+        if (config.timer && config.timer > 0) {
+
+        }
+
+        // store config in level instance
+        this.config = config;
     }
 
     /**
@@ -63,6 +70,9 @@ class Level {
      * This must be overridden by each level
      */
     levelWinCriteria() {
+        if (this.config.timer) {
+            return this.config.remainingTime <= 0;
+        }
         for (let item in this.needsToCollect) {
             if (this.needsToCollect[item].amount > 0 && this.needsToCollect[item].required) {
                 return false;
@@ -145,6 +155,12 @@ class Level {
         if (this.levelWinCriteria()) {
             MoonshotApplication.INSTANCE.disableGameplay(true);
         }
+
+        if (this.config.timer) {
+            let delta = MoonshotApplication.INSTANCE.getTimer().getDeltaRaw() / 1000;
+            this.config.remainingTime -= delta;
+        }
+
     }
 
     /** 
@@ -167,9 +183,23 @@ class Level {
         for (let item in this.needsToCollect) {
             if (this.needsToCollect[item].required) {
                 let amount = this.needsToCollect[item].amount;
-                ctx.fillText(item + "s: " + amount, 10, 45 + (i * 30));
+                ctx.fillText(item + "s: " + amount, 10, 105 + (i * 30));
                 i++;
             }
+        }
+
+        // render timer if needed
+        if (this.config.timer) {
+            let time = Math.round(this.config.remainingTime);
+            let minutes = Math.round(time / 60);
+            let seconds = Math.round(time % 60);
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            ctx.fillText("Time remaining: " + minutes + ":" + seconds, 10, 75);
         }
 
         ctx.fillStyle = "#0af";

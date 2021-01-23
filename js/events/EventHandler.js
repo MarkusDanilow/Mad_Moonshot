@@ -21,7 +21,9 @@ class EventHandler {
         });
 
         $('#to-main-menu-from-loading').click((e) => {
-            MoonshotApplication.INSTANCE.getUI().activateFullscreen();
+            if (MoonshotApplication.INSTANCE.fullscreenEnabled) {
+                MoonshotApplication.INSTANCE.getUI().activateFullscreen();
+            }
             MoonshotApplication.INSTANCE.gotoMainMenu();
         });
 

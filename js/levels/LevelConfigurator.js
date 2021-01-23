@@ -35,6 +35,7 @@ class LevelConfigurator {
 
         config = this.configureEventHandlers(config, level);
         config = this.configureCollectableItems(config, level);
+        config = this.configureTimer(config, level);
 
         return config;
     }
@@ -68,6 +69,24 @@ class LevelConfigurator {
                 config.needsToCollect[item][i] = ItemCollectionConstants.items[level.levelId][item][i];
         }
         config.startupItems = ItemCollectionConstants.StartupItems[level.levelId];
+        return config;
+    }
+
+    /**
+     * 
+     * @param {*} config 
+     * @param {*} level 
+     */
+    configureTimer(config, level) {
+        if (!config || !level) return config;
+        config.remainingTime = -1;
+        config.timer = false;
+        switch (level.levelId) {
+            case 2:
+                config.remainingTime = 10;
+                config.timer = true;
+                break;
+        }
         return config;
     }
 

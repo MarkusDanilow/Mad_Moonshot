@@ -78,6 +78,11 @@ class UI {
      */
     hideLoadingScreen() {
         this.hideElement($('#loading-screen'));
+        if (MoonshotApplication.INSTANCE.fullscreenEnabled) {
+            $('#fullscreen-hint').removeClass("d-none");
+        } else {
+            $('#fullscreen-hint').addClass("d-none");
+        }
     }
 
     /**

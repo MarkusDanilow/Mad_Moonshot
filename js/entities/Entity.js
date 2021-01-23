@@ -5,6 +5,8 @@ class Entity {
         this.size = { width: 0, height: 0 };
         this.fillColor = "white";
         this.speed = 0;
+        this.textures = [];
+        this.selectedTexture = -1;
     }
 
     toRectangle() {
@@ -24,10 +26,14 @@ class Entity {
     }
 
     render(ctx) {
-        ctx.fillStyle = this.fillColor;
         let screenPos = this.getScreenPos();
         let screenSize = this.getScreenSize();
-        ctx.fillRect(screenPos.x, screenPos.y, screenSize.width, screenSize.height);
+        if (this.textures && this.textures.length > 0 && this.selectedTexture > -1) {
+            ctx.drawImage(this.textures[this.selectedTexture], screenPos.x, screenPos.y, screenSize.width, screenSize.height);
+        } else {
+            ctx.fillStyle = this.fillColor;
+            ctx.fillRect(screenPos.x, screenPos.y, screenSize.width, screenSize.height);
+        }
     }
 
     getScreenSize() {
@@ -71,7 +77,7 @@ class Entity {
     }
 
     isOutOfBoundsY() {
-        return (this.position.y < TransformationUtil.WORLD_BOUNDS.min_y + this.size.height ||
+        return (this.position.y < TransformationUtil.WORLD_BOUNDS.min_y - this.size.height ||
             this.position.y > TransformationUtil.WORLD_BOUNDS.max_y);
     }
 

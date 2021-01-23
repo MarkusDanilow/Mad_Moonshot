@@ -9,6 +9,7 @@ class MoonshotApplication {
         this.levelIndex = 0;
         this.canStartGame = false;
         this.tryAgain = false;
+        this.fullscreenEnabled = false;
     }
 
     /**
@@ -82,7 +83,7 @@ class MoonshotApplication {
     /**
      * 
      */
-    gotoMainMenu(startBgMusic = true) {
+    gotoMainMenu(startBgMusic = false) {
         this.ui.hideElement($('#loading-done-screen'));
         this.ui.hideElement($('#escape-btn'));
         this.ui.hideElement($('.rendering-canvas'));
@@ -263,6 +264,27 @@ class MoonshotApplication {
             // this.ui.renderDialogText("Too bad, unfortunately you did not make it! Give it another try...");
         }
     }
+
+    /**
+     * 
+     * @param {*} min 
+     * @param {*} max 
+     */
+    randomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min))
+    }
+
+    /**
+     * 
+     * @param {*} min 
+     * @param {*} max 
+     */
+    randomFloat(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
 
 }
 
