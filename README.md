@@ -21,8 +21,6 @@ From the parts he finds, he constructs more and more useful power-ups to collect
 
 ---
 
-Translated with www.DeepL.com/Translator (free version)
-
 ## Concept (German)
 
 You play an astronaut (Aly) who is stranded in space.
