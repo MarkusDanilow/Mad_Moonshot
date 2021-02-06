@@ -128,7 +128,10 @@ class Level {
         } else {
             MoonshotApplication.INSTANCE.getSounds().playCollectSound();
             let type = item.type;
-            this.needsToCollect[type].amount--;
+            console.log(type);
+            if (this.needsToCollect[type].amount > 0) {
+                this.needsToCollect[type].amount--;
+            }
         }
     }
 
@@ -181,9 +184,28 @@ class Level {
         ctx.font = (baseFontSize - 5) + "px " + font;
         let i = 1;
         for (let item in this.needsToCollect) {
-            if (this.needsToCollect[item].required) {
+            if (this.needsToCollect[item].required && this.needsToCollect[item].amount > 0) {
                 let amount = this.needsToCollect[item].amount;
-                ctx.fillText(item + "s: " + amount, 10, 105 + (i * 30));
+                let itemPrint = item.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+                let demoItem = eval(`new ${item}Item()`);
+                if (!this.needsToCollect[item].selectedPreviewTexture) {
+                    this.needsToCollect[item].selectedPreviewTexture = 0;
+                }
+                if (!this.needsToCollect[item].deltaTimeSinceLastPreviewChange) {
+                    this.needsToCollect[item].deltaTimeSinceLastPreviewChange = 0;
+                }
+                this.needsToCollect[item].deltaTimeSinceLastPreviewChange += this.getDeltaRaw();
+                if (this.needsToCollect[item].deltaTimeSinceLastPreviewChange >= 2000) {
+                    this.needsToCollect[item].deltaTimeSinceLastPreviewChange = 0;
+                    this.needsToCollect[item].selectedPreviewTexture = (this.needsToCollect[item].selectedPreviewTexture + 1) % demoItem.textures.length;
+                }
+                if (demoItem.textures[this.needsToCollect[item].selectedPreviewTexture]) {
+                    let texture = demoItem.textures[this.needsToCollect[item].selectedPreviewTexture];
+                    if (texture) {
+                        ctx.drawImage(texture, 10, 87 + (i * 30), baseFontSize, baseFontSize);
+                    }
+                }
+                ctx.fillText(itemPrint + "s: " + amount, 10 + baseFontSize * 1.5, 105 + (i * 30));
                 i++;
             }
         }
@@ -191,15 +213,18 @@ class Level {
         // render timer if needed
         if (this.config.timer) {
             let time = Math.round(this.config.remainingTime);
-            let minutes = Math.round(time / 60);
-            let seconds = Math.round(time % 60);
+            let minutes = Math.floor(time / 60);
+            let seconds = Math.floor(time % 60);
             if (minutes < 10) {
                 minutes = "0" + minutes;
             }
             if (seconds < 10) {
                 seconds = "0" + seconds;
             }
-            ctx.fillText("Time remaining: " + minutes + ":" + seconds, 10, 75);
+            let distance = time * 100;
+            distance = distance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            //ctx.fillText("Time remaining: " + minutes + ":" + seconds, 10, 75);
+            ctx.fillText("Est. Distance to Ship: " + distance + "m", 10, 75);
         }
 
         ctx.fillStyle = "#0af";

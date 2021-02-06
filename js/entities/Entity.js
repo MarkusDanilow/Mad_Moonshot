@@ -7,6 +7,14 @@ class Entity {
         this.speed = 0;
         this.textures = [];
         this.selectedTexture = -1;
+        this.rotationAngle = 0;
+
+        let r = MoonshotApplication.INSTANCE.randomInt(0, 10);
+        this.rotationMultiplier = r < 5 ? -1 : 1;
+    }
+
+    selectRandomTexture() {
+        this.selectedTexture = MoonshotApplication.INSTANCE.randomInt(0, this.textures.length);
     }
 
     toRectangle() {
@@ -28,12 +36,21 @@ class Entity {
     render(ctx) {
         let screenPos = this.getScreenPos();
         let screenSize = this.getScreenSize();
+
+        let angleInRadians = (this.rotationAngle * Math.PI) / 180.0 * this.rotationMultiplier;
+        ctx.translate(screenPos.x, screenPos.y);
+        ctx.rotate(angleInRadians);
+
         if (this.textures && this.textures.length > 0 && this.selectedTexture > -1) {
-            ctx.drawImage(this.textures[this.selectedTexture], screenPos.x, screenPos.y, screenSize.width, screenSize.height);
+            ctx.drawImage(this.textures[this.selectedTexture], -screenSize.width / 2, -screenSize.height / 2, screenSize.width, screenSize.height);
         } else {
             ctx.fillStyle = this.fillColor;
-            ctx.fillRect(screenPos.x, screenPos.y, screenSize.width, screenSize.height);
+            ctx.fillRect(0, 0, screenSize.width, screenSize.height);
         }
+
+        ctx.rotate(-angleInRadians);
+        ctx.translate(-screenPos.x, -screenPos.y);
+
     }
 
     getScreenSize() {

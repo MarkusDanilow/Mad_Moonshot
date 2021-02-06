@@ -2,7 +2,10 @@ class ScrewItem extends Item {
 
     constructor() {
         super("Screw");
-        this.fillColor = "rgba(180,180,180,1)";
+        let width = MoonshotApplication.INSTANCE.randomFloat(0.07, 0.09);
+        this.size = { width: width, height: width * TransformationUtil.TARGET_RES_RATIO };
+        this.textures = MoonshotApplication.INSTANCE.textureLoader.textureLibrary.textures['screwTexture'];
+        this.selectRandomTexture();
     }
 
 }

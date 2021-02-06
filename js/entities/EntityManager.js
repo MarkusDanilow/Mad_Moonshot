@@ -47,6 +47,7 @@ class EntityManager {
         for (let i = this.entities.length - 1; i >= 0; i--) {
             this.entities[i].update();
             if (!this.entities[i].isFixed) {
+                this.entities[i].rotationAngle += delta * 100;
                 this.entities[i].moveDown(delta);
             }
             let collected = player.collidesWith(this.entities[i]);

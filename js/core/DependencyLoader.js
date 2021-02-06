@@ -65,5 +65,5 @@ DependencyLoader.DependencyModules = {
     story: ["MoonshotStory"],
     levels: ["ItemCollectionConstants", "LevelConfigurator", "Level"],
     entities: ["EntityManager", "Entity", "Star", "Player"],
-    items: ["Item", "ScrewItem", "BombItem", "AsteroidItem", "FixWayPointItem"]
+    items: ["Item", "FuelCell", "InsulationItem", "WireItem", "CircuitBoardItem", "PlateItem", "WindowItem", "ScrewItem", "BombItem", "AsteroidItem", "DebrisItem", "FixWayPointItem"]
 }

@@ -9,7 +9,7 @@ class MoonshotApplication {
         this.levelIndex = 0;
         this.canStartGame = false;
         this.tryAgain = false;
-        this.fullscreenEnabled = false;
+        this.fullscreenEnabled = true;
     }
 
     /**
@@ -83,11 +83,12 @@ class MoonshotApplication {
     /**
      * 
      */
-    gotoMainMenu(startBgMusic = false) {
+    gotoMainMenu(startBgMusic = true) {
         this.ui.hideElement($('#loading-done-screen'));
         this.ui.hideElement($('#escape-btn'));
         this.ui.hideElement($('.rendering-canvas'));
         this.hideDialogBox();
+        this.gameplayEnabled = false;
         if (startBgMusic) {
             this.sounds.playBackgroundMusic_Quiet();
         }
@@ -134,12 +135,19 @@ class MoonshotApplication {
             this.switchToGameplay();
         } else {
             this.showDialogBox();
-            this.ui.renderDialogText(this.storyModule.next());
-            if (this.storyModule.isEndReached()) {
-                this.ui.toggleDialogButtons(true);
+            let nextStoryEntry = this.storyModule.next();
+            if (nextStoryEntry <= -512) {
+                // end  => so we return to the start screen 
+                this.gotoMainMenu(false);
             } else {
-                this.ui.toggleDialogButtons(false);
+                this.ui.renderDialogText(nextStoryEntry);
+                if (this.storyModule.isEndReached()) {
+                    this.ui.toggleDialogButtons(true);
+                } else {
+                    this.ui.toggleDialogButtons(false);
+                }
             }
+
         }
     }
 
@@ -248,7 +256,9 @@ class MoonshotApplication {
      */
     disableGameplay(moveOnInStory = true) {
         this.gameplayEnabled = false;
-        this.level.unregisterGameplayEvents();
+        if (this.level) {
+            this.level.unregisterGameplayEvents();
+        }
         this.level = null;
 
         this.ui.hideElement($('.rendering-canvas'));
@@ -261,7 +271,7 @@ class MoonshotApplication {
             this.nextDialog();
         } else {
             this.tryAgain = true;
-            // this.ui.renderDialogText("Too bad, unfortunately you did not make it! Give it another try...");
+            this.ui.renderDialogText("I must be more careful next time!");
         }
     }
 
@@ -296,4 +306,4 @@ MoonshotApplication.INSTANCE = null;
 /**
  * 
  */
-MoonshotApplication.TARGET_FPS = 30;
+MoonshotApplication.TARGET_FPS = 120;

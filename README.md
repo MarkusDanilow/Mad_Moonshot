@@ -27,13 +27,17 @@ Am Ende der aktuell generierten 100 Level steht die Fertigstellung des Schiffs -
 
 ## Was muss am Schiff alles repariert werden? 
 
-- Cockpit (Scheiben, Türen) - Level 3
-- Außenhülle - Level 4
+- Außenhülle - Level 3
+- Cockpit (Scheiben, Türen) - Level 4
 - Steuerkonsole (Navigation, Ruder, Funkgerät etc.) - Level 5
+
+(
 - Werkbank, um Anzugsverbesserungen entwickeln zu können. - Level 6
 - Anzugsverbesserung, um weiter vom Raumschiff weg zu können und andere Teile einsammeln zu können, die weiter weg vom Schiff treiben - Level 7
-- Antriebsgenerator - Level 8
-- Triebwerke - Level 9
+)
+
+- Triebwerke - Level 8
+- Antriebsgenerator - Level 9
 
 => in Level 10 ist das Schiff fertig repariert und wir fliegen nun nicht mehr mit unserem Raumanzug, sondern mit unserem Schiff durch die Gegend. Um die anderen aus unserer Cerw zu finden und zu unserer Heimat zurückzukehren. Über Funk haben wir leider trotz repariertem Funkgerät niemanden erreicht. 
 
@@ -58,3 +62,42 @@ Endlich habe ich das Schiff erreicht. Aber immer noch keine Spur von den anderen
 Unser Schiff hat auch schon mal bessere Zeiten gesehen... 
 Immerhin scheinen die Lebenserhaltungssysteme noch zu funktionieren. Ich kann also jederzeit Sauerstoff für meinen Raumanzug nachfüllen...
 ...und auch die Düsen meines Anzugs auftanken. 
+Da draußen habe ich schon viele Trümmerteile herumfliegen sehen. Einige davon sahen noch gut aus. 
+Ich sollte versuchen, diese Teile einzusammeln und damit zumindest die großen Risse in der Außenhülle abdichten. 
+Dafür brauche ich ein paar große Platten und Schrauben. 
+--- 
+Sehr gut, ich konnte die Außenhülle unseres Schiffes reparieren.
+Als nächstes sollte ich versuchen, das Schiff wieder flugbereit zu machen. 
+Das dürfte aber ganz schön schwierig werden. Das Cockpit hat einiges abbekommen...
+Ich sollte als nächstes das Cockpit abdichten und die Türen und Fenster reparieren. Dafür brauche ich auf jeden Fall noch mehr Schrauben und Platten. 
+Außerdem sollte ich die Augen nach durchsichtigen Teilen für die Fenster offen halten...
+---
+Je weiter ich mich vom Schiff entferne, desto schneller werden Asteroiden. Ich muss bei meinen nächsten Außeneinsätzen aufpassen!
+Immerhin ist das Cockpit ist endlich abgedichtet. 
+Um überhaupt wieder fliegen zu können, muss ich als nächstes die zentrale Steuerkonsole reparieren. 
+Wenn diese wieder funktioniert, kann ich auch das Funkgerät wieder bedienen und so hoffentlich die anderen aus meiner Crew erreichen.
+Bevor ich nochmal rausgehe, sollte ich meinen Anzug nochmal voll aufladen. Die kleinen Teile für die Steuerkonsole da draußen zu finden, wird bestimmt nicht einfach.
+---
+Die Suche nach den Ersatzteilen für die Steuerkonsole hat ewig gedauert. Doch mit viel Ausdauer und ein wenig Fingerspitzengefühl konnte ich die Konsole nun endlich reparieren. 
+Hoffentlich ist es nicht schon zu spät, um die anderen zu erreichen...
+"Hallo, hört mit jemand?"
+...
+"Kann mich irgend jemand hören?!"
+...
+"Hallo?!!"
+Mist! Das ist nicht gut... 
+Vielleicht treiben die anderen aber auch nur außerhalb des Funkbereichs umher. Ich darf die Hoffnung nicht aufgeben!
+Ich muss das Schiff wieder einsatzbereit machen!
+Das Cockpit und die Steuerkonsole funktionieren schon. Bleiben noch die Triebwerke und der Generator. 
+Für die Triebwerke brauche ich ganz besonders viel Isoliermaterial, damit das Schiff nicht sofort explodiert, wenn ich meinen ersten Flugversuch starte...
+---
+Das wird immer wilder und gefährlicher da draußen. Zum Glück muss ich mich jetzt nur noch um den Generator kümmern.
+Dafür brauche ich eigentlich nich viel. Nur ein paar Platten und zusätzliche Schrauben...
+...und Brennstoffzellen.
+Ich habe in der Ferne bereits einige leuchten sehen. Ein Teil unserer Brennstoffvorräte scheint den Crash also heil überstanden zu haben...
+---
+Ich habe alles und das Schiff sollte nun wieder einsatzbereit sein. 
+Bleibt nur noch zu hoffen, dass die Brennstoffzellen wirklich noch intakt sind und die erste Zündung nicht in einer großen Explosion endet...
+Ich starte die Turbinen in 3...
+2...
+1...

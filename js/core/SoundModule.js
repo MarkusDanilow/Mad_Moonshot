@@ -31,9 +31,16 @@ class SoundModule {
         this.playSound(this.bgMusicInspiration);
     }
 
+    stopBackgroundMusic_Inspiration() {
+        this.stopSound(this.bgMusicInspiration);
+    }
 
     playBackgroundMusic_Quiet() {
         this.playSound(this.bgMusicQuiet);
+    }
+
+    stopBackgroundMusic_Quiet() {
+        this.stopSound(this.bgMusicQuiet);
     }
 
 

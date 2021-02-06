@@ -10,7 +10,7 @@ class LevelConfigurator {
         let levelIndex = level.levelId;
 
         //const changeRate = Math.pow(Math.log10(level.levelId + 1), 2) / 1.5;
-        const changeRate = (Math.log(10 * (levelIndex * levelIndex))) / 50;
+        const changeRate = (Math.log(10 * (levelIndex * levelIndex))) / 35;
         level.player.speed = changeRate * 0.9;
 
         let config = {
@@ -83,7 +83,7 @@ class LevelConfigurator {
         config.timer = false;
         switch (level.levelId) {
             case 2:
-                config.remainingTime = 10;
+                config.remainingTime = 120;
                 config.timer = true;
                 break;
         }

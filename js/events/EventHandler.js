@@ -88,6 +88,18 @@ class EventHandler {
             ui.hideElement($('#escape-btn'));
         });
 
+        // toggle music
+        $('#mute-music').click(function(e) {
+            let icon = $('i', $(this));
+            if (icon.hasClass('fa-volume-mute')) {
+                icon.removeClass('fa-volume-mute').addClass('fa-volume-up');
+                MoonshotApplication.INSTANCE.getSounds().playBackgroundMusic_Quiet();
+            } else {
+                icon.addClass('fa-volume-mute').removeClass('fa-volume-up');
+                MoonshotApplication.INSTANCE.getSounds().stopBackgroundMusic_Quiet();
+            }
+        });
+
     }
 
 }

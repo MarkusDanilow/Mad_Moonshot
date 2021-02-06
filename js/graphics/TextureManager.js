@@ -9,7 +9,15 @@ class TextureManager {
             fileType: '.png',
             textureSources: {
                 playerTexture: ['aly_full'],
-                asteroidTexture: ['asteroid1', 'asteroid2', 'asteroid3']
+                asteroidTexture: ['asteroid1', 'asteroid2', 'asteroid3'],
+                debrisTexture: ['debris1', 'debris2'],
+                plateTexture: ['debris1'],
+                screwTexture: ['screw'],
+                windowTexture: ['window'],
+                circuitTexture: ["circuit"],
+                wireTexture: ["wire1", "wire2", "wire3"],
+                isolationTexture: ["isolation"],
+                fuelCellTexture: ["fuel"]
             },
             textures: {
 
