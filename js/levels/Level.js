@@ -128,7 +128,6 @@ class Level {
         } else {
             MoonshotApplication.INSTANCE.getSounds().playCollectSound();
             let type = item.type;
-            console.log(type);
             if (this.needsToCollect[type].amount > 0) {
                 this.needsToCollect[type].amount--;
             }

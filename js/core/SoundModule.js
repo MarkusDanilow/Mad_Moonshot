@@ -3,6 +3,7 @@ class SoundModule {
     constructor() {
         this.collectSound = $('#collect-sound')[0];
         this.explosionSound = $('#explosion-sound')[0];
+        this.launchSound = $('#launch-sound')[0];
         this.bgMusicInspiration = $('#background-music-inspiration')[0];
         this.bgMusicQuiet = $('#background-music-quiet')[0];
     }
@@ -25,6 +26,10 @@ class SoundModule {
 
     playCollectSound() {
         this.playSound(this.collectSound);
+    }
+
+    playLaunchSound() {
+        this.playSound(this.launchSound);
     }
 
     playBackgroundMusic_Inspiration() {

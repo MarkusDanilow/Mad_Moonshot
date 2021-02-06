@@ -83,9 +83,12 @@ class EventHandler {
 
         $('#back-to-main-menu-from-game').click((e) => {
             let ui = MoonshotApplication.INSTANCE.getUI();
+            /*
             ui.hideDialogBox();
             ui.showMainMenu();
             ui.hideElement($('#escape-btn'));
+            */
+            MoonshotApplication.INSTANCE.gotoMainMenu(false, true);
         });
 
         // toggle music

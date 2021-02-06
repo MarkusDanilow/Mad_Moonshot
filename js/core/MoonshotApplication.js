@@ -83,16 +83,32 @@ class MoonshotApplication {
     /**
      * 
      */
-    gotoMainMenu(startBgMusic = true) {
+    gotoMainMenu(startBgMusic = true, playEndScreen = false) {
+        let scope = this;
         this.ui.hideElement($('#loading-done-screen'));
         this.ui.hideElement($('#escape-btn'));
         this.ui.hideElement($('.rendering-canvas'));
         this.hideDialogBox();
-        this.gameplayEnabled = false;
+        scope.gameplayEnabled = false;
         if (startBgMusic) {
             this.sounds.playBackgroundMusic_Quiet();
         }
-        this.ui.showMainMenu();
+        let showMainMenuFn = function() {
+            scope.ui.showMainMenu();
+        }
+        if (playEndScreen) {
+            scope.sounds.playLaunchSound();
+            setTimeout(() => {
+                let ship = $('.space-ship');
+                ship.animate({ 'margin-top': $(window).height() + 100 }, 0).show();
+                ship.animate({ 'margin-top': -500 }, 5000);
+                setTimeout(() => {
+                    showMainMenuFn();
+                }, 5000);
+            }, 500);
+        } else {
+            showMainMenuFn();
+        }
     }
 
     /**
@@ -136,9 +152,10 @@ class MoonshotApplication {
         } else {
             this.showDialogBox();
             let nextStoryEntry = this.storyModule.next();
+            console.log(nextStoryEntry);
             if (nextStoryEntry <= -512) {
                 // end  => so we return to the start screen 
-                this.gotoMainMenu(false);
+                this.gotoMainMenu(false, true);
             } else {
                 this.ui.renderDialogText(nextStoryEntry);
                 if (this.storyModule.isEndReached()) {
