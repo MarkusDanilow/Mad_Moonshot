@@ -1,27 +1,6 @@
 # Mad Moonshot
 
-## Concept (German)
-
-You play an astronaut (Aly) who is stranded in space.
-The last thing he remembers is that he was on a mission to a distant moon together with his crew.
-But there is no trace of them - or of his spaceship.
-
-Luckily he has his spacesuit on with enough oxygen reserves.
-
-Around him he sees lots of junk flying. He has the nasty fear that the spaceship has been destroyed and that his crew might not have made it. But what could have happened to them and their ship.
-
-In the first level he must first learn to move. His spacesuit has nozzles for this, with which he can float to the left and right (arrow keys). After a short time he discovers what is left of their ship.
-Fortunately, parts of the ship are still well preserved. Most importantly, the life support systems. So he can go back on board after each mission to recharge his oxygen. But this will not work forever...
-
-He decides to repair the ship again. So he floats around the moon with his spacesuit and collects all the necessary parts from the debris that he needs for the repair.
-
-With each outdoor mission, it becomes more difficult: he has to move farther and farther away from his ship, exposing himself to greater and greater dangers....
-
-From the parts he finds, he constructs more and more useful power-ups to collect even more parts faster and thus brave the challenges of cold and merciless space.
-
----
-
-## Concept (German)
+## Concept 
 
 You play an astronaut (Aly) who is stranded in space.
 The last thing he remembers is that he was on a mission to a distant moon together with his crew.
